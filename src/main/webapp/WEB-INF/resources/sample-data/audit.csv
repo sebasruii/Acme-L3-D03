@@ -1,0 +1,28 @@
+key,code,conclusion,strongPoints,weakPoints,key:course,key:auditor
+audit-01,A000,.,.,.,course-01,auditor-01
+audit-02,AZ999,.,.,.,course-01,auditor-01
+audit-03,AJG765,.,.,.,course-01,auditor-01
+audit-04,AAA111,conclusionwithcharacterlimitof100charactersandiwillfillthemwith aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,.,.,course-01,auditor-01
+audit-05,AAA112,conclusionwithcharacterlimitof100charactersandiwillfillthemwith aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,.,.,course-01,auditor-01
+audit-06,AAA113,a,.,.,course-01,auditor-01
+audit-07,AAA114,aa,.,.,course-01,auditor-01
+audit-08,AAA115,"<script>alert(""hi!"")</script>",.,.,course-01,auditor-01
+audit-09,AAA116,<h1> Hola </h1>,.,.,course-01,auditor-01
+audit-10,AAA117,Ð²Ñ�Ð°Ñ�Ñ�Ñ„,.,.,course-01,auditor-01
+audit-11,AAA118,%Â·&$Â·&%,.,.,course-01,auditor-01
+audit-12,AAA119,.,strongpointwithcharacterlimitof100charactersandiwillfillthemwithaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,.,course-01,auditor-01
+audit-13,AAA120,.,strongpointwithcharacterlimitof100charactersandiwillfillthemwithaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,.,course-01,auditor-01
+audit-14,AAA121,.,a,.,course-01,auditor-01
+audit-15,AAA122,.,aa,.,course-01,auditor-01
+audit-16,AAA123,.,"<script>alert(""hi!"")</script>",.,course-01,auditor-01
+audit-17,AAA124,.,<h1> Hola </h1>,.,course-01,auditor-01
+audit-18,AAA125,.,Ð²Ñ�Ð°Ñ�Ñ�Ñ„,.,course-01,auditor-01
+audit-19,AAA126,.,%Â·&$Â·&%,.,course-01,auditor-01
+audit-20,AAA127,.,.,weakpointwithcharacterlimitof100charactersandiwillfillthemwithaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,course-01,auditor-01
+audit-21,AAA128,.,.,weakpointwithcharacterlimitof100charactersandiwillfillthemwithaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,course-01,auditor-01
+audit-22,AAA129,.,.,a,course-01,auditor-01
+audit-23,AAA130,.,.,aa,course-01,auditor-01
+audit-24,AAA131,.,.,"<script>alert(""hi!"")</script>",course-01,auditor-01
+audit-25,AAA132,.,.,<h1> Hola </h1>,course-01,auditor-01
+audit-26,AAA133,.,.,Ð²Ñ�Ð°Ñ�Ñ�Ñ ,course-01,auditor-01
+audit-27,AAA134,.,.,%Â·&$Â·&%,course-01,auditor-01
