@@ -14,7 +14,7 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
+<%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
@@ -41,6 +41,10 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
