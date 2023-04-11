@@ -10,7 +10,6 @@ import acme.entities.offers.Offer;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
-import acme.roles.Provider;
 
 @Service
 public class AuthenticatedOfferListService extends AbstractService<Authenticated, Offer> {
@@ -26,7 +25,7 @@ public class AuthenticatedOfferListService extends AbstractService<Authenticated
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRole(Provider.class);
+		status = super.getRequest().getPrincipal().isAuthenticated();
 
 		super.getResponse().setAuthorised(status);
 
