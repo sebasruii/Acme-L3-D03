@@ -1,5 +1,7 @@
 # messages-en.i18n
 
+
+authenticated.offer.list = Lista de ofertas
 authenticated.offer.list.label.heading = Titulo
 authenticated.offer.list.label.startDate = Fecha Inicio
 authenticated.offer.list.label.finishDate = Fecha Final
