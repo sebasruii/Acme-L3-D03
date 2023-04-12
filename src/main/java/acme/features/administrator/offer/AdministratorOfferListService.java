@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.offer;
+package acme.features.administrator.offer;
 
 import java.util.Collection;
 
@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.offers.Offer;
-import acme.framework.components.accounts.Authenticated;
+import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 
 @Service
-public class AuthenticatedOfferListService extends AbstractService<Authenticated, Offer> {
+public class AdministratorOfferListService extends AbstractService<Administrator, Offer> {
 
 	//Internal	state ------------------------------------------------------------------------
 	@Autowired
-	protected AuthenticatedOfferRepository repository;
+	protected AdministratorOfferRepository repository;
 
 	//AbstractService Interface -------------------------------------------------------------
 
@@ -49,7 +49,7 @@ public class AuthenticatedOfferListService extends AbstractService<Authenticated
 	public void unbind(final Offer object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, "heading", "summary", "startDate", "finishDate", "price", "link");
+		tuple = super.unbind(object, "instantiation", "heading", "summary", "startDate", "finishDate", "price", "link");
 
 		super.getResponse().setData(tuple);
 	}

@@ -16,3 +16,5 @@ administrator.offer.form.label.summary = Summary
 administrator.offer.form.label.price = Price
 administrator.offer.form.label.link = Link
 administrator.offer.form.button.create = Create
+administrator.offer.form.button.update = Update
+administrator.offer.form.button.delete = Delete

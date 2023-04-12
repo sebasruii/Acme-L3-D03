@@ -1,18 +1,17 @@
 
 package acme.features.authenticated.offer;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.offers.Offer;
+import acme.framework.components.accounts.Administrator;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 
 @Service
-public class AuthenticatedOfferListService extends AbstractService<Authenticated, Offer> {
+public class AuthenticatedOfferShowService extends AbstractService<Authenticated, Offer> {
 
 	//Internal	state ------------------------------------------------------------------------
 	@Autowired
@@ -22,36 +21,43 @@ public class AuthenticatedOfferListService extends AbstractService<Authenticated
 
 
 	@Override
-	public void authorise() {
+	public void check() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().isAuthenticated();
+		status = super.getRequest().hasData("id", int.class);
 
-		super.getResponse().setAuthorised(status);
-
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
-	public void check() {
-		super.getResponse().setChecked(true);
+	public void authorise() {
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Offer> object;
+		Offer object;
+		int id;
 
-		object = this.repository.findAllOffers();
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOfferById(id);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void unbind(final Offer object) {
+		assert object != null;
+
 		Tuple tuple;
 
-		tuple = super.unbind(object, "heading", "summary", "startDate", "finishDate", "price", "link");
+		tuple = super.unbind(object, "instantiation", "heading", "summary", "startDate", "finishDate", "price", "link");
+		tuple.put("readonly", true);
 
 		super.getResponse().setData(tuple);
 	}
-
 }

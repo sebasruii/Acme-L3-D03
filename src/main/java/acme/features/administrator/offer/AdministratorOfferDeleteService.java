@@ -1,22 +1,16 @@
 
 package acme.features.administrator.offer;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.offers.Offer;
 import acme.framework.components.accounts.Administrator;
 import acme.framework.components.models.Tuple;
-import acme.framework.controllers.HttpMethod;
-import acme.framework.helpers.MomentHelper;
-import acme.framework.helpers.PrincipalHelper;
 import acme.framework.services.AbstractService;
 
 @Service
-public class AdministratorOfferUpdateService extends AbstractService<Administrator, Offer> {
+public class AdministratorOfferDeleteService extends AbstractService<Administrator, Offer> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,37 +31,20 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		boolean roleAuthorise;
-		final boolean validInstantiationStartDate;
-		final boolean validStartFinishDate;
-		int id;
-		final Offer offer;
+		boolean status;
 
-		id = super.getRequest().getData("id", int.class);
-		offer = this.repository.findOfferById(id);
-
-		//Custom restrictions
-		validInstantiationStartDate = MomentHelper.isLongEnough(offer.getInstantiation(), offer.getStartDate(), 1, ChronoUnit.DAYS);
-		validStartFinishDate = MomentHelper.isLongEnough(offer.getStartDate(), offer.getFinishDate(), 7, ChronoUnit.DAYS);
-		roleAuthorise = super.getRequest().getPrincipal().hasRole(Administrator.class);
-
-		status = validInstantiationStartDate && validStartFinishDate && roleAuthorise;
+		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
 		Offer object;
 		int id;
-		Date instantiationDate;
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOfferById(id);
-		instantiationDate = MomentHelper.getCurrentMoment();
-		object.setInstantiation(instantiationDate);
 
 		super.getBuffer().setData(object);
 	}
@@ -82,27 +59,24 @@ public class AdministratorOfferUpdateService extends AbstractService<Administrat
 	@Override
 	public void validate(final Offer object) {
 		assert object != null;
+
 	}
 
 	@Override
 	public void perform(final Offer object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final Offer object) {
+		assert object != null;
+
 		Tuple tuple;
 
 		tuple = super.unbind(object, "instantiation", "heading", "summary", "startDate", "finishDate", "price", "link");
 
 		super.getResponse().setData(tuple);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals(HttpMethod.POST))
-			PrincipalHelper.handleUpdate();
 	}
 }

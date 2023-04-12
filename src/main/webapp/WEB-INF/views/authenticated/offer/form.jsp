@@ -16,7 +16,6 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-moment code="administrator.offer.form.label.instantiation" path="instantiation" readonly="true"/>
 	<acme:input-moment code="administrator.offer.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="administrator.offer.form.label.finishDate" path="finishDate"/>	
 	<acme:input-textbox code="administrator.offer.form.label.heading" path="heading" />
@@ -27,10 +26,6 @@
 	<jstl:choose> 
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="administrator.offer.form.button.create" action="/administrator/offer/create" />
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'update|delete|show')}">
-			<acme:submit code="administrator.offer.form.button.update" action="/administrator/offer/update" />
-			<acme:submit code="administrator.offer.form.button.delete" action="/administrator/offer/delete" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

@@ -20,4 +20,5 @@
 	<acme:list-column code="authenticated.offer.list.label.startDate" path="startDate" width="10%"/>
 	<acme:list-column code="authenticated.offer.list.label.finishDate" path="finishDate" width="10%"/>
 	<acme:list-column code="authenticated.offer.list.label.price" path="price" width="10%"/>
+	<acme:list-column code="authenticated.offer.list.label.link" path="link" width="30%"/>
 </acme:list>
