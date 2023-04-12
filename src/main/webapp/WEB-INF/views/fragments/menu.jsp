@@ -26,6 +26,10 @@
 			<acme:menu-suboption code="49852235B: Jimenez Del Villar, Juan Antonio" action="https://twitter.com"/>
 		</acme:menu-option>	
 		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="authenticated.offer.list" action="/authenticated/offer/list"/>
+		</acme:menu-option>	
+		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
