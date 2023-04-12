@@ -20,6 +20,11 @@ master.menu.sign-out = Salir
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
 
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.note.list = Notas
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
