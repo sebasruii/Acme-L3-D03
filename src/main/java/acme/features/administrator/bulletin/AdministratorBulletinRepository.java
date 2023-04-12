@@ -7,14 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.bulletins.Bulletin;
-import acme.entities.offers.Offer;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AdministratorBulletinRepository extends AbstractRepository {
 
 	@Query("select b from Bulletin b where b.id = :id")
-	Offer findBulletinById(int id);
+	Bulletin findBulletinById(int id);
 
 	@Query("select b from Bulletin b")
 	Collection<Bulletin> findAllBulletins();
