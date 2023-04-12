@@ -9,3 +9,8 @@ authenticated.note.form.label.title = Título
 authenticated.note.form.label.message = Mensaje
 authenticated.note.form.label.email = E-mail
 authenticated.note.form.label.link = Más información
+
+authenticated.note.form.button.create = Publicar
+
+authenticated.note.form.confirmation = Confirmación
+authenticated.note.form.confirmation-required = Para publicar una nota se requiere confirmar

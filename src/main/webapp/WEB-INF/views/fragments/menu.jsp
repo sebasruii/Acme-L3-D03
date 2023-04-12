@@ -49,6 +49,7 @@
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
