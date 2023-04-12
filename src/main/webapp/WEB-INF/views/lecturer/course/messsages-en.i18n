@@ -1,0 +1,15 @@
+lecturer.course.list.label.code = Code
+lecturer.course.list.label.title = Title
+lecturer.course.list.label.price = Price
+
+lecturer.course.form.label.code = Code
+lecturer.course.form.label.title = Title
+lecturer.course.form.label.summary = Summary
+lecturer.course.form.label.price = Price
+lecturer.course.form.label.link = More information
+
+lecturer.course.form.button.lectures = See lectures
+lecturer.course.form.button.update = Update
+lecturer.course.form.button.delete = Delete
+lecturer.course.form.button.publish = Publish
+lecturer.course.form.button.create = Create
