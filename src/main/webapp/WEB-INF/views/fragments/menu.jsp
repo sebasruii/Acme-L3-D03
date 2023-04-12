@@ -48,6 +48,10 @@
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
 			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
+			<acme:menu-suboption code="master.menu.assistant.list" action="/assistant/tutorial/list"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

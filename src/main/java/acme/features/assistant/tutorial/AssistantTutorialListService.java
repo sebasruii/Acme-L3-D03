@@ -6,8 +6,8 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.offers.Offer;
 import acme.entities.tutorials.Tutorial;
+import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
@@ -40,17 +40,17 @@ public class AssistantTutorialListService extends AbstractService<Assistant, Tut
 		Collection<Tutorial> object;
 		final int id;
 
-		id = super.getRequest().getPrincipal().getId();
+		id = super.getRequest().getPrincipal().getActiveRoleId();
 		object = this.repository.findTutorialsByAssistantId(id);
 
 		super.getBuffer().setData(object);
 	}
 
 	@Override
-	public void unbind(final Offer object) {
+	public void unbind(final Tutorial object) {
 		Tuple tuple;
 
-		tuple = super.unbind(object, "instantiation", "heading", "summary", "startDate", "finishDate", "price", "link");
+		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode", "course");
 
 		super.getResponse().setData(tuple);
 	}

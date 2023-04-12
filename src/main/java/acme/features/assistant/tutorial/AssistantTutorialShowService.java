@@ -33,14 +33,15 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 	public void authorise() {
 		Tutorial object;
 		boolean status;
+		final boolean isCreatorOfTutorial;
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findTutorialById(id);
-		//FALTA RESTRICCION DE COMPROBAR QUE ES DEL ASSISTENTE X
+		isCreatorOfTutorial = super.getRequest().getPrincipal().getActiveRoleId() == object.getAssistant().getId();
 		status = super.getRequest().getPrincipal().hasRole(Assistant.class);
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && isCreatorOfTutorial);
 	}
 
 	@Override
