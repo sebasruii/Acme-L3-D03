@@ -47,6 +47,7 @@
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
 			<acme:menu-suboption code="master.menu.lecturer.list" action="/lecturer/course/list"/>
+			<acme:menu-suboption code="master.menu.lecturer.create" action="/lecturer/course/create"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
