@@ -50,6 +50,7 @@ master.menu.user-account.become-assistant = Become a assistant
 master.menu.user-account.update-assistant = Update you assistant role
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.become-company = Become a company
 
 # master.menu.lecturer ##########################################################
 
