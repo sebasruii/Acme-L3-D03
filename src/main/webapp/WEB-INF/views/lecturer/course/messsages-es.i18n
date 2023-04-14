@@ -13,3 +13,6 @@ lecturer.course.form.button.update = Actualizar
 lecturer.course.form.button.delete = Borrar
 lecturer.course.form.button.publish = Publicar
 lecturer.course.form.button.create = Crear
+
+lecturer.course.form.error.duplicated = Este código ya está en uso, prueba con otro código
+lecturer.course.form.error.negative-price = El precio debe ser cero o una cantidad positiva

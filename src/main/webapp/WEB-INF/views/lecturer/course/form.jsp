@@ -21,7 +21,7 @@
 			<acme:submit code="lecturer.course.form.button.publish" action="/lecturer/course/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="lecturer.course.form.button.create" action="/employer/job/create"/>
+			<acme:submit code="lecturer.course.form.button.create" action="/lecturer/course/create"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
