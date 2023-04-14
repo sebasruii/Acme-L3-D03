@@ -55,4 +55,9 @@ public class Course extends AbstractEntity {
 	@Valid
 	protected Lecturer			lecturer;
 
+
+	public Boolean isDraftMode() {
+		return this.getDraftMode();
+	}
+
 }
