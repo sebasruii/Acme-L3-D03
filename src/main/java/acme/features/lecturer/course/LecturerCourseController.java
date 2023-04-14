@@ -26,7 +26,7 @@ public class LecturerCourseController extends AbstractController<Lecturer, Cours
 	protected LecturerCourseUpdateService	updateService;
 
 	@Autowired
-	LecturerCourseDeleteService				deleteService;
+	protected LecturerCourseDeleteService	deleteService;
 
 
 	@PostConstruct
@@ -35,5 +35,7 @@ public class LecturerCourseController extends AbstractController<Lecturer, Cours
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("delete", this.deleteService);
+
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.courses.Course;
+import acme.entities.lectures.LectureCourse;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
 
@@ -24,5 +25,8 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select c from Course c where c.code = :code")
 	Course findOneCourseByCode(String code);
+
+	@Query("select lc from LectureCourse lc where lc.course.id = :courseId")
+	Collection<LectureCourse> findManyLectureCoursesByCourseId(int courseId);
 
 }
