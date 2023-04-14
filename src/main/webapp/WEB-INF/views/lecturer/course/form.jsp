@@ -7,6 +7,11 @@
 	<acme:input-textbox code="lecturer.course.form.label.code" path="code"/>
 	<acme:input-textbox code="lecturer.course.form.label.title" path="title"/>
 	<acme:input-textarea code="lecturer.course.form.label.summary" path="summary"/>
+	<jstl:choose>
+		<jstl:when test="${not empty courseType }">
+			<acme:input-textbox code="lecturer.course.form.label.courseType" path="courseType" readonly="true"/>
+		</jstl:when>
+	</jstl:choose>
 	<acme:input-money code="lecturer.course.form.label.price" path="price"/>
 	<acme:input-url code="lecturer.course.form.label.link" path="link"/>
 

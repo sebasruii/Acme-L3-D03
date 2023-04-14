@@ -7,6 +7,7 @@ lecturer.course.form.label.title = Title
 lecturer.course.form.label.summary = Summary
 lecturer.course.form.label.price = Price
 lecturer.course.form.label.link = More information
+lecturer.course.form.label.courseType = Course Type
 
 lecturer.course.form.button.lectures = See lectures
 lecturer.course.form.button.update = Update

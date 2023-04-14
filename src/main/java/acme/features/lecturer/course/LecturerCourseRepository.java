@@ -29,4 +29,10 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select lc from LectureCourse lc where lc.course.id = :courseId")
 	Collection<LectureCourse> findManyLectureCoursesByCourseId(int courseId);
 
+	@Query("select count(lc) from LectureCourse lc where lc.course.id = :courseId and lc.lecture.lectureType = acme.entities.NatureType.NatureType.THEORY")
+	Integer numberOfTheoryLecturesPerCourse(int courseId);
+
+	@Query("select count(lc) from LectureCourse lc where lc.course.id = :courseId and lc.lecture.lectureType = acme.entities.NatureType.NatureType.HANDS_ON")
+	Integer numberOfHandsOnLecturesPerCourse(int courseId);
+
 }
