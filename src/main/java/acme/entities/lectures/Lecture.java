@@ -43,4 +43,12 @@ public class Lecture extends AbstractEntity {
 
 	@URL
 	protected String			link;
+
+	@NotNull
+	protected Boolean			draftMode;
+
+
+	public Boolean isDraftMode() {
+		return this.draftMode;
+	}
 }

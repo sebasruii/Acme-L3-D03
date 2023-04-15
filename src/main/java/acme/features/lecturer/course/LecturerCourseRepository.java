@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.courses.Course;
+import acme.entities.lectures.Lecture;
 import acme.entities.lectures.LectureCourse;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
@@ -34,5 +35,8 @@ public interface LecturerCourseRepository extends AbstractRepository {
 
 	@Query("select count(lc) from LectureCourse lc where lc.course.id = :courseId and lc.lecture.lectureType = acme.entities.NatureType.NatureType.HANDS_ON")
 	Integer numberOfHandsOnLecturesPerCourse(int courseId);
+
+	@Query("select lc.lecture from LectureCourse lc where lc.course.id = :courseId")
+	Collection<Lecture> findManyLecturesByCourseId(int courseId);
 
 }

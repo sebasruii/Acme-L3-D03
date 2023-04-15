@@ -17,3 +17,6 @@ lecturer.course.form.button.create = Crear
 
 lecturer.course.form.error.duplicated = Este código ya está en uso, prueba con otro código
 lecturer.course.form.error.negative-price = El precio debe ser cero o una cantidad positiva
+lecturer.course.form.error.emptyLectures = El curso no tiene niguna lección. Añade al menos una.
+lecturer.course.form.error.unpublishedLectures = Todas las lecciones deben estar publicadas antes de publicar un curso.
+lecturer.course.form.error.allLecturesAreTheory = Los cursos no pueden ser puramente teóricos.
