@@ -6,14 +6,14 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
-import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureAllMineService extends AbstractService<Lecturer, Lecture> {
+public class LecturerLectureListService extends AbstractService<Lecturer, Lecture> {
 
 	@Autowired
 	protected LecturerLectureRepository repository;
@@ -21,21 +21,33 @@ public class LecturerLectureAllMineService extends AbstractService<Lecturer, Lec
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("courseId", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int courseId;
+		Course course;
+
+		courseId = super.getRequest().getData("courseId", int.class);
+		course = this.repository.findOneCourseById(courseId);
+		status = course != null && super.getRequest().getPrincipal().hasRole(course.getLecturer());
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<Lecture> objects;
-		Principal principal;
+		int courseId;
 
-		principal = super.getRequest().getPrincipal();
-		objects = this.repository.findLecturesByLecturerId(principal.getActiveRoleId());
+		courseId = super.getRequest().getData("courseId", int.class);
+		objects = this.repository.findLecturesByCourseId(courseId);
 
 		super.getBuffer().setData(objects);
 	}
