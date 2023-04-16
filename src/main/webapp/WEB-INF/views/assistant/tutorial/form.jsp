@@ -21,7 +21,14 @@
 	<acme:input-textbox code="assistant.tutorial.list.label.summary" path="summary"/>
 	<acme:input-textbox code="assistant.tutorial.list.label.goals" path="goals"/>
 
-	
-	<acme:submit test="${_command == 'create|show'}" code="assistant.consumer.form.button.create" action="/assistant/tutorial/create"/>
-	<acme:submit test="${_command == 'update|show'}" code="assistant.consumer.form.button.update" action="/assistant/tutorial/update"/>
+	<jstl:choose>	 
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/tutorial/update"/>
+			<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/tutorial/delete"/>
+			<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/tutorial/publish"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="assistant.tutorial.form.button.create" action="/assistant/tutorial/create"/>
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
