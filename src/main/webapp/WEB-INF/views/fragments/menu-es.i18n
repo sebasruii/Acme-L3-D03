@@ -17,10 +17,11 @@ master.menu.sign-out = Salir
 
 # master.menu.authenticated #######################################################
 
-master.menu.authenticated = Autenticado
+master.menu.authenticated = Autentificado
 master.menu.authenticated.bulletin.list = Listar Boletines
 master.menu.authenticated.auditor.create = Convertirse en Auditor
 master.menu.authenticated.auditor.update = Actualizar Perfil
+master.menu.authenticated.audit.list = Listar Auditorías
 
 # master.menu.anonymous #######################################################
 

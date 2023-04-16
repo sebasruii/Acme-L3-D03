@@ -7,5 +7,4 @@ import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AuditorAuditRepository extends AbstractRepository {
-
 }
