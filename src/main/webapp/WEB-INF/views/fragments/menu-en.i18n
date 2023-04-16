@@ -28,6 +28,12 @@ master.menu.authenticated.audit.list = List Audits
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
 
+# master.menu.auditor #######################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.list = List Audits
+master.menu.auditor.create = Create Audit
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator

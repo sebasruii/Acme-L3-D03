@@ -1,12 +1,8 @@
 
 package acme.features.authenticated.audit;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.error.Mark;
 
 import acme.entities.audits.Audit;
 import acme.framework.components.accounts.Authenticated;
@@ -56,17 +52,19 @@ public class AuthenticatedAuditShowService extends AbstractService<Authenticated
 		assert object != null;
 
 		Tuple tuple;
-		final List<Mark> marks = this.repository.findAllMarksByAuditId(object.getId());
+		//final List<Mark> marks = this.repository.findAllMarksByAuditId(object.getId());
 
 		tuple = super.unbind(object, "code", "conclusion", "strongPoints", "weakPoints");
 		tuple.put("auditor", object.getAuditor().getProfessionalId());
 		tuple.put("courseName", object.getCourse().getTitle());
 
-		if (marks != null && !marks.isEmpty())
-			tuple.put("marks", marks.stream().map(Mark::toString).collect(Collectors.joining(", ", "[ ", " ]")));
-		else
-			tuple.put("marks", "-----");
-		super.getResponse().setData(tuple);
+		/*
+		 * if (marks != null && !marks.isEmpty())
+		 * tuple.put("marks", marks.stream().map(Mark::toString).collect(Collectors.joining(", ", "[ ", " ]")));
+		 * else
+		 * tuple.put("marks", "-----");
+		 * super.getResponse().setData(tuple);
+		 */
 	}
 
 }

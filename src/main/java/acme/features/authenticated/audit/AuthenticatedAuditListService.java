@@ -36,11 +36,11 @@ public class AuthenticatedAuditListService extends AbstractService<Authenticated
 
 	@Override
 	public void load() {
-		Collection<Audit> objects;
+		final Collection<Audit> objects;
 		int masterId;
 		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findAllAuditsByCourseId(masterId);
-		super.getBuffer().setData(objects);
+		//objects = this.repository.findAllAuditsByCourseId(masterId);
+		//super.getBuffer().setData(objects);
 	}
 
 	@Override

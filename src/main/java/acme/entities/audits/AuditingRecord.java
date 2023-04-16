@@ -44,6 +44,8 @@ public class AuditingRecord extends AbstractEntity {
 	protected Date				finishDate;
 
 	@NotNull
+	protected Boolean			draftMode;
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	protected Audit				audit;

@@ -40,7 +40,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.auditor.create" action="/authenticated/auditor/create"/>
-			<acme:menu-suboption code="master.menu.authenticated.auditor.update" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+			<acme:menu-suboption code="master.menu.authenticated.auditor.update" action="authenticated/auditor/update" access="hasRole('Auditor')"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
 		</acme:menu-option>
@@ -50,6 +50,11 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.list" action="/auditor/audit/list"/>
+			<acme:menu-suboption code="master.menu.auditor.create" action="/auditor/audit/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
