@@ -2,6 +2,8 @@
 package acme.entities.lectures;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -10,6 +12,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.entities.NatureType.NatureType;
 import acme.framework.data.AbstractEntity;
+import acme.roles.Lecturer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,6 +49,10 @@ public class Lecture extends AbstractEntity {
 
 	@NotNull
 	protected Boolean			draftMode;
+
+	@ManyToOne(optional = false)
+	@Valid
+	protected Lecturer			lecturer;
 
 
 	public Boolean isDraftMode() {

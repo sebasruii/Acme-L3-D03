@@ -52,5 +52,7 @@ master.menu.user-account.become-consumer = Become a consumer
 # master.menu.lecturer ##########################################################
 
 master.menu.lecturer = Lecturer
-master.menu.lecturer.list = My courses
-master.menu.lecturer.create = Create a Course
+master.menu.lecturer.course.list = My courses
+master.menu.lecturer.course.create = Create a Course
+
+master.menu.lecturer.lecture.list = My lectures
