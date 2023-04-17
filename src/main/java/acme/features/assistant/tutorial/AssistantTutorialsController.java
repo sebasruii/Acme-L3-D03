@@ -30,6 +30,9 @@ public class AssistantTutorialsController extends AbstractController<Assistant, 
 	@Autowired
 	protected AssistantTutorialUpdateService	updateService;
 
+	@Autowired
+	protected AssistantTutorialPublishService	publishService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -40,6 +43,7 @@ public class AssistantTutorialsController extends AbstractController<Assistant, 
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("update", this.updateService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }

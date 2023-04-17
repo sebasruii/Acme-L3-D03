@@ -35,17 +35,10 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 
 	@Override
 	public void authorise() {
-		Tutorial object;
-		boolean status;
-		final boolean isCreatorOfTutorial;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findTutorialById(id);
-		isCreatorOfTutorial = super.getRequest().getPrincipal().getActiveRoleId() == object.getAssistant().getId();
-		status = super.getRequest().getPrincipal().hasRole(Assistant.class);
-
-		super.getResponse().setAuthorised(status && isCreatorOfTutorial);
+		final int id = super.getRequest().getData("id", int.class);
+		final Tutorial tutorial = this.repository.findTutorialById(id);
+		final boolean status = tutorial != null && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant());
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -64,14 +57,15 @@ public class AssistantTutorialShowService extends AbstractService<Assistant, Tut
 		assert object != null;
 
 		Tuple tuple;
+
 		final List<Course> courses = this.repository.findAllPublishedCourses();
 		final SelectChoices choices = SelectChoices.from(courses, "code", object.getCourse());
 
-		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode", "course");
-		tuple.put("course", choices.getSelected().getKey());
+		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode");
+		tuple.put("course", object.getCourse().getCode());
 		tuple.put("courses", choices);
-		tuple.put("readonly", true);
 
 		super.getResponse().setData(tuple);
+
 	}
 }
