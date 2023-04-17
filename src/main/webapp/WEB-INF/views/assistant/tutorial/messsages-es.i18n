@@ -14,5 +14,11 @@ assistant.tutorial.list.label.code = Codigo
 assistant.tutorial.list.label.goals = Objetivos
 assistant.tutorial.list.label.course = Curso
 
-assistant.consumer.form.button.create = Crear
-assistant.consumer.form.button.update = Actualizar
+assistant.tutorial.label.draftMode = Modo Borrador
+assistant.tutorial.form.label.course = Curso
+
+assistant.tutorial.form.button.create = Crear
+assistant.tutorial.form.button.delete = Borrar
+assistant.tutorial.form.button.update = Actualizar
+assistant.tutorial.form.button.publish = Publicar
+assistant.tutorial.form.button.tutorials = Tutoriales

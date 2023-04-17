@@ -57,3 +57,4 @@ master.menu.lecturer.favourite-link = Favourite link
 # master.menu.assistant ###########################################################
 master.menu.assistant = Assistant
 master.menu.assistant.list = Tutorials List
+master.menu.assistant.create = Create Tutorial
