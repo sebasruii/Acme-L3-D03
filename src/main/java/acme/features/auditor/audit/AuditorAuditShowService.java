@@ -38,9 +38,13 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void load() {
-		final int auditorId = super.getRequest().getPrincipal().getActiveRoleId();
-		final List<Audit> objects = this.repository.findAllAuditsByAuditorId(auditorId);
-		super.getBuffer().setData(objects);
+		Audit object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findAuditById(id);
+
+		super.getBuffer().setData(object);
 	}
 
 	@Override

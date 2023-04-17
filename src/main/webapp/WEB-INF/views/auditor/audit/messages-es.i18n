@@ -22,3 +22,6 @@ auditor.audit.form.button.update = Actualizar Auditoría
 auditor.audit.form.button.delete = Borrar Auditoría
 auditor.audit.form.button.publish = Publicar Auditoría
 auditor.audit.form.button.create = Crear Auditoría
+
+auditor.audit.error.code.duplicated = El código está duplicado, prueba otro.
+auditor.audit.error.course.draft = No puedes añadir una auditoría para un curso sin publicar.
