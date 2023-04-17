@@ -53,9 +53,15 @@
 			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+
+		<acme:menu-option code="master.menu.assistant" access="hasRole('Assistant')">
+			<acme:menu-suboption code="master.menu.assistant.list" action="/assistant/tutorial/list"/>
+			<acme:menu-suboption code="master.menu.assistant.create" action="/assistant/tutorial/create"/>
+
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
+
 		</acme:menu-option>
 	</acme:menu-left>
 
