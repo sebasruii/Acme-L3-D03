@@ -2,10 +2,12 @@
 package acme.features.assistant.tutorial;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.courses.Course;
 import acme.entities.tutorials.Tutorial;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Assistant;
@@ -27,5 +29,11 @@ public interface AssistantTutorialRepository extends AbstractRepository {
 
 	@Query("select a from Assistant a where a.id = :assistantId")
 	Assistant findAssistantById(int assistantId);
+
+	@Query("select c from Course c where c.id = :courseId")
+	Course findCourseById(int courseId);
+
+	@Query("select c from Course c where c.draftMode = false")
+	List<Course> findAllPublishedCourses();
 
 }
