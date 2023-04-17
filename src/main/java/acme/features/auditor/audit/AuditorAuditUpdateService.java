@@ -32,12 +32,14 @@ public class AuditorAuditUpdateService extends AbstractService<Auditor, Audit> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int auditId;
+		int masterId;
 		Audit audit;
+		Auditor auditor;
 
-		auditId = super.getRequest().getData("id", int.class);
-		audit = this.repository.findAuditById(auditId);
-		status = audit != null && audit.isDraftMode() && super.getRequest().getPrincipal().hasRole(audit.getAuditor());
+		masterId = super.getRequest().getData("id", int.class);
+		audit = this.repository.findAuditById(masterId);
+		auditor = audit == null ? null : audit.getAuditor();
+		status = audit != null && audit.isDraftMode() && super.getRequest().getPrincipal().hasRole(auditor);
 
 		super.getResponse().setAuthorised(status);
 	}
