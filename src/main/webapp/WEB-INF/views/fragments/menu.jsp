@@ -46,6 +46,11 @@
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
 			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.peep" access="hasRole('Any')">
+			<acme:menu-suboption code="master.menu.Peep.favourite-link"  action="/any/peep/list"/>
+		</acme:menu-option>
+
 	</acme:menu-left>
 
 	<acme:menu-right>
