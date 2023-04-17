@@ -52,10 +52,10 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 
 		final int courseId = super.getRequest().getData("course", int.class);
 		final Course course = this.repository.findCourseById(courseId);
+		object.setCourse(course);
 
 		super.bind(object, "code", "title", "summary", "goals");
 
-		object.setCourse(course);
 	}
 
 	@Override
