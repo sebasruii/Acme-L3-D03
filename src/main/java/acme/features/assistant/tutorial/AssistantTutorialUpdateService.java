@@ -26,21 +26,24 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		// Cannot update if tutorial doesn't belong to you or tutorial has been published
-		super.getResponse().setAuthorised(true);
-		final int tutorialId = super.getRequest().getData("id", int.class);
-		final Tutorial tutorial = this.repository.findTutorialById(tutorialId);
+		boolean status;
+		int id;
+		Tutorial tutorial;
 
-		final int assistantIdFromTutorial = tutorial.getAssistant().getId();
+		id = super.getRequest().getData("id", int.class);
+		tutorial = this.repository.findTutorialById(id);
+		status = tutorial != null && tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssistant());
 
-		final int assistantIdFromLoggedUser = super.getRequest().getPrincipal().getActiveRoleId();
-
-		super.getResponse().setAuthorised(assistantIdFromTutorial == assistantIdFromLoggedUser);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -64,7 +67,7 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
 
-		super.bind(object, "code");
+		super.bind(object, "code", "title", "summary", "goals", "draftMode");
 		object.setCourse(course);
 	}
 
@@ -72,18 +75,6 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 	public void validate(final Tutorial object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Tutorial existing;
-
-			existing = this.repository.findTutorialByCode(object.getCode());
-
-			// Code must be new or the same than the 'old' tutorial
-			super.state(existing == null || existing.getCode().equals(object.getCode()), "code", "assistant.tutorial.form.error.duplicated");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("course")) {
-			final Course existing = object.getCourse();
-			super.state(existing != null, "course", "assistant.tutorial.form.error.null-course");
-		}
 	}
 
 	@Override
@@ -102,9 +93,8 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		Tuple tuple;
 
 		courses = this.repository.findAllPublishedCourses();
-		choices = SelectChoices.from(courses, "title", object.getCourse());
-
-		tuple = super.unbind(object, "code", "title", "summary", "goals");
+		choices = SelectChoices.from(courses, "code", object.getCourse());
+		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 
