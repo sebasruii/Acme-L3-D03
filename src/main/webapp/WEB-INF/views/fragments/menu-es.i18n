@@ -15,16 +15,28 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.bulletin.list = Listar Boletines
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link = Enlace favorito
+
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.note.list = Notas
+master.menu.authenticated.note.create = Publicar una nota
 
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.create-bulletin = Crear Boletín
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
@@ -46,8 +58,12 @@ master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
 master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.become-assistant = Hazte asistente
+master.menu.user-account.update-assistant = Actualiza tu rol de asistente
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.become-company = Hazte una compañía
+master.menu.user-account.company= Datos de la compañía
 
 # master.menu.lecturer ##########################################################
 
