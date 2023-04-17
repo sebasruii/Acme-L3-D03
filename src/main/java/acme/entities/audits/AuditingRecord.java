@@ -45,6 +45,8 @@ public class AuditingRecord extends AbstractEntity {
 
 	@NotNull
 	protected Boolean			draftMode;
+
+	protected Boolean			correction;
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
