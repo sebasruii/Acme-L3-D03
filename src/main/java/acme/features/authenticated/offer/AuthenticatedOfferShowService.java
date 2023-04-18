@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.offers.Offer;
-import acme.framework.components.accounts.Administrator;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -33,7 +32,7 @@ public class AuthenticatedOfferShowService extends AbstractService<Authenticated
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
+		status = super.getRequest().getPrincipal().isAuthenticated();
 
 		super.getResponse().setAuthorised(status);
 	}

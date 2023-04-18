@@ -12,11 +12,12 @@ import acme.framework.services.AbstractService;
 @Service
 public class AdministratorOfferShowService extends AbstractService<Administrator, Offer> {
 
-	//Internal	state ------------------------------------------------------------------------
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	protected AdministratorOfferRepository repository;
 
-	//AbstractService Interface -------------------------------------------------------------
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -30,17 +31,13 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = super.getRequest().getPrincipal().hasRole(Administrator.class);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Offer object;
 		int id;
+		Offer object;
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOfferById(id);
@@ -55,8 +52,8 @@ public class AdministratorOfferShowService extends AbstractService<Administrator
 		Tuple tuple;
 
 		tuple = super.unbind(object, "instantiation", "heading", "summary", "startDate", "finishDate", "price", "link");
-		tuple.put("readonly", true);
 
 		super.getResponse().setData(tuple);
 	}
+
 }
