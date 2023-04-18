@@ -13,7 +13,7 @@
 	<jstl:if test="${_command != 'create' && marks != null}">
 		<acme:input-textbox code="auditor.audit.label.marks" path="marks" readonly="true"/>
 	</jstl:if>
-	<acme:hidden-data path="draftMode"/>
+	<acme:input-checkbox code="auditor.audit.label.draftMode" path="draftMode" />
 
 
 	<jstl:choose>	 
@@ -27,10 +27,10 @@
 			<acme:submit code="auditor.audit.form.button.create" action="/auditor/audit/create"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="auditor.audit.form.button.addCorrectionAuditingrecord" action="/auditor/auditing-record/correct?auditId=${id}"/>
+			<acme:button code="auditor.audit.form.button.addCorrection" action="/auditor/auditing-record/correct?auditId=${id}"/>
 		</jstl:when>
 	</jstl:choose>
 	<jstl:if test="${_command != 'create'}">
-		<acme:button code="auditor.audit.form.button.auditingrecords" action="/auditor/auditing-record/list?auditId=${id}"/>
+		<acme:button code="auditor.audit.form.button.auditingRecords" action="/auditor/auditing-record/list?auditId=${id}"/>
 	</jstl:if>
 </acme:form>

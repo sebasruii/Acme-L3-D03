@@ -14,7 +14,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorAuditingRecordCreateService extends AbstractService<Auditor, AuditingRecord> {
+public class AuditorAuditingRecordCorrectService extends AbstractService<Auditor, AuditingRecord> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -34,7 +34,7 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 
 		boolean status;
 		final Audit audit = this.repository.findOneAuditById(super.getRequest().getData("auditId", int.class));
-		status = super.getRequest().getPrincipal().hasRole(audit.getAuditor()) && audit.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(audit.getAuditor()) && !audit.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,13 +57,15 @@ public class AuditorAuditingRecordCreateService extends AbstractService<Auditor,
 		super.bind(object, "subject", "assessment", "link", "startDate", "finishDate");
 		object.setMark(mark);
 		object.setAudit(audit);
-		object.setDraftMode(true);
-		object.setCorrection(false);
+		object.setDraftMode(false);
+		object.setCorrection(true);
 	}
 
 	@Override
 	public void validate(final AuditingRecord object) {
 		assert object != null;
+		final Boolean confirm = super.getRequest().getData("confirm", boolean.class);
+		super.state(confirm, "*", "auditor.auditingrecord.correction.confirmation");
 
 		if (!super.getBuffer().getErrors().hasErrors("startDate") && !super.getBuffer().getErrors().hasErrors("startDate"))
 			if (!MomentHelper.isBefore(object.getStartDate(), object.getFinishDate()))

@@ -2,6 +2,7 @@
 package acme.features.auditor.auditingRecord;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,7 +15,7 @@ import acme.framework.repositories.AbstractRepository;
 public interface AuditorAuditingRecordRepository extends AbstractRepository {
 
 	@Query("select ar from AuditingRecord ar where ar.audit.id=:masterId")
-	Collection<AuditingRecord> findAllAuditingRecordsByMasterId(int masterId);
+	List<AuditingRecord> findAllAuditingRecordsByMasterId(int masterId);
 
 	@Query("select a from Audit a where a.id = :id")
 	Audit findOneAuditById(int id);

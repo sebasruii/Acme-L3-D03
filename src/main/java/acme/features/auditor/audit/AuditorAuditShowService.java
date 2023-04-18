@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.error.Mark;
 
 import acme.entities.audits.Audit;
 import acme.entities.courses.Course;
@@ -52,7 +51,7 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 		assert object != null;
 
 		Tuple tuple;
-		final List<Mark> marks = this.repository.findAllReleasedMarksByAuditId(object.getId());
+		final List<String> marks = this.repository.findAllMarksByAuditId(object.getId());
 
 		final List<Course> courses = this.repository.findAllPublishedCourses();
 		final SelectChoices choices = SelectChoices.from(courses, "code", object.getCourse());
@@ -61,7 +60,7 @@ public class AuditorAuditShowService extends AbstractService<Auditor, Audit> {
 		tuple.put("course", object.getCourse().getCode());
 		tuple.put("courses", choices);
 		if (marks != null && !marks.isEmpty())
-			tuple.put("marks", marks.stream().map(Mark::toString).collect(Collectors.joining(", ", "[ ", " ]")));
+			tuple.put("marks", marks.stream().collect(Collectors.joining(", ", "[ ", " ]")));
 		else
 			tuple.put("marks", "N/A");
 
