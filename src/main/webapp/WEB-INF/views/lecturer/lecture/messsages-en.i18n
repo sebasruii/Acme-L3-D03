@@ -15,3 +15,8 @@ lecturer.lecture.form.button.update = Update
 lecturer.lecture.form.button.delete = Delete
 lecturer.lecture.form.button.publish = Publish
 lecturer.lecture.form.button.create = Create
+lecturer.lecture.form.button.delete-from-course = Remove from a Course
+
+
+lecturer.lectureCourse.form.button.add = Add lecture
+lecturer.lectureCourse.form.button.delete = Delete lecture

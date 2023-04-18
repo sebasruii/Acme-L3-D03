@@ -12,3 +12,8 @@
 <jstl:if test="${_command == 'list-all'}">
 	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
 </jstl:if>
+
+<jstl:if test="${_command == 'list' && draftMode == true}">
+	<acme:button code="lecturer.lectureCourse.form.button.add" action="/lecturer/lecture-course/add?courseId=${courseId}"/>
+</jstl:if>	
+	

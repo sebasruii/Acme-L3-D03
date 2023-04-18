@@ -1,6 +1,8 @@
 
 package acme.features.lecturer.lecture;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,5 +69,14 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 		tuple.put("lectureTypes", choices);
 
 		super.getResponse().setData(tuple);
+	}
+
+	@Override
+	public void unbind(final Collection<Lecture> objects) {
+		assert objects != null;
+		int lectureId;
+
+		lectureId = super.getRequest().getData("id", int.class);
+		super.getResponse().setGlobal("lectureId", lectureId);
 	}
 }

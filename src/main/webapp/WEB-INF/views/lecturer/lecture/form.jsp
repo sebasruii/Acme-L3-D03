@@ -15,10 +15,14 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
 			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
-			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>
+			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="lecturer.lecture.form.button.create" action="/lecturer/lecture/create"/>
 		</jstl:when>		
 	</jstl:choose>
+	<jstl:if test="${_command != 'create'}">
+		<acme:button code="lecturer.lecture.form.button.delete-from-course" action="/lecturer/lecture-course/delete?lectureId=${lectureId}"/>
+	</jstl:if>
+	
 </acme:form>

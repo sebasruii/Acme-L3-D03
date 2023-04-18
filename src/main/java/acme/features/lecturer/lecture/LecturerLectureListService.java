@@ -60,4 +60,16 @@ public class LecturerLectureListService extends AbstractService<Lecturer, Lectur
 		tuple = super.unbind(object, "title", "estimatedLearningTime", "lectureType");
 		super.getResponse().setData(tuple);
 	}
+
+	@Override
+	public void unbind(final Collection<Lecture> objects) {
+		assert objects != null;
+		int courseId;
+		Course course;
+
+		courseId = super.getRequest().getData("courseId", int.class);
+		course = this.repository.findOneCourseById(courseId);
+		super.getResponse().setGlobal("draftMode", course.isDraftMode());
+		super.getResponse().setGlobal("courseId", courseId);
+	}
 }
