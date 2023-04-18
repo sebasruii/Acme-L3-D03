@@ -28,6 +28,7 @@
             <acme:button code="assistant.tutorial.form.button.tutorials" action="/assistant/tutorial/list?masterId=${id}"/>
         </jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+		<acme:button code="assistant.tutorial.form.button.tutorialSessions" action="/assistant/tutorial-session/list?masterId=${id}"/> 
 			<acme:submit code="assistant.tutorial.form.button.update" action="/assistant/tutorial/update"/>
 			<acme:submit code="assistant.tutorial.form.button.delete" action="/assistant/tutorial/delete"/>
 			<acme:submit code="assistant.tutorial.form.button.publish" action="/assistant/tutorial/publish"/>
