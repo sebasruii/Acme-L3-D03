@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import acme.framework.components.accounts.UserAccount;
 import acme.framework.repositories.AbstractRepository;
+
 import acme.roles.Lecturer;
+
 
 @Repository
 public interface AuthenticatedLecturerRepository extends AbstractRepository {
@@ -16,4 +18,5 @@ public interface AuthenticatedLecturerRepository extends AbstractRepository {
 
 	@Query("select l from Lecturer l where l.userAccount.id = :id")
 	Lecturer findOneLecturerByUserAccountId(int id);
+
 }

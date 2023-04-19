@@ -20,9 +20,11 @@ public class AuthenticatedLecturerController extends AbstractController<Authenti
 	AuthenticatedLecturerUpdateService	updateService;
 
 
+
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
+
 	}
 }
