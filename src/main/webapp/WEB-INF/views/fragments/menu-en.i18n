@@ -25,6 +25,7 @@ master.menu.authenticated.bulletin.list = List Bulletins
 
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
+master.menu.anonymous.all-courses = See courses
 
 # master.menu.authenticated ###################################################
 
@@ -70,9 +71,15 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.become-company = Become a company
 master.menu.user-account.company= Company data
+master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.lecturer= Lecturer data
 
 # master.menu.lecturer ##########################################################
 
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 master.menu.lecturer.dashboard = Dashboard
+master.menu.lecturer.course.list = My courses
+master.menu.lecturer.course.create = Create a Course
+master.menu.lecturer.lecture.list = My lectures
+
