@@ -19,9 +19,9 @@
 	<acme:input-url
 		code="assistant.tutorialSession.form.label.link"
 		path="link" />
-		<acme:input-checkbox
+		<acme:input-textarea
 		code="assistant.tutorialSession.form.label.draftMode"
-		path="draftMode" />
+		path="draftMode" readonly="true"/>
 
 	<jstl:choose>
 		<jstl:when

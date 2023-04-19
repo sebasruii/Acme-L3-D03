@@ -8,4 +8,4 @@
   <acme:list-column code="assistant.tutorialSession.list.label.type" path="type" width="30%"/>
 </acme:list>
 
-<acme:button test="${showCreate}" code="assistant.tutorialSession.list.button.create" action="/assistant/tutorial-session/create?masterId=${masterId}"/>
+<acme:button  code="assistant.tutorialSession.list.button.create" action="/assistant/tutorial-session/create?masterId=${masterId}"/>
