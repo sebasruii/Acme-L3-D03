@@ -19,9 +19,9 @@
 	<acme:input-textbox code="assistant.tutorial.list.label.code" path="code"/>
 	<acme:input-textbox code="assistant.tutorial.list.label.title" path="title"/>
 	<acme:input-textbox code="assistant.tutorial.list.label.summary" path="summary"/>
-	<acme:input-textbox code="assistant.tutorial.list.label.goals" path="goals"/>
-	<acme:input-checkbox code="assistant.tutorial.label.draftMode" path="draftMode" />
+	<acme:input-textarea code="assistant.tutorial.list.label.goals" path="goals"/>
 	<acme:input-select code="assistant.tutorial.form.label.course" path="course" choices="${courses}"/>
+		<acme:input-textbox code="assistant.tutorial.label.draftMode" path="draftMode" readonly="true"/>
 
 	<jstl:choose>	 
 	       <jstl:when test="${_command == 'show' && draftMode == false}">
