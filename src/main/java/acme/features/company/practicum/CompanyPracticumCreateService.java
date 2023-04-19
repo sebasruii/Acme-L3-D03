@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.company.practicum;
+package acme.features.company.practicum;
 
 import java.util.Collection;
 
@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.courses.Course;
-import acme.entities.practicumSessions.PracticumSession;
 import acme.entities.practicums.Practicum;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
@@ -15,9 +14,9 @@ import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumDeleteService extends AbstractService<Company, Practicum> {
-	// Internal state ---------------------------------------------------------
+public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
 
+	// Internal state ---------------------------------------------------------
 	@Autowired
 	protected CompanyPracticumRepository repository;
 
@@ -25,61 +24,60 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 	// AbstractService interface ----------------------------------------------
 	@Override
 	public void check() {
-		boolean status;
-		status = super.getRequest().hasData("id", int.class);
-		super.getResponse().setChecked(status);
+		super.getResponse().setChecked(true);
 	}
-
 	@Override
 	public void authorise() {
 		boolean status;
-		int PracticumId;
-		Practicum Practicum;
-		Company Company;
-		PracticumId = super.getRequest().getData("id", int.class);
-		Practicum = this.repository.findPracticumById(PracticumId);
-		Company = Practicum == null ? null : Practicum.getCompany();
-		status = Practicum != null && Practicum.getDraftMode() || super.getRequest().getPrincipal().hasRole(Company);
+		status = super.getRequest().getPrincipal().hasRole(Company.class);
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		Practicum object;
-		int id;
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findPracticumById(id);
+		Company company;
+		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
+
+		object = new Practicum();
+		object.setCompany(company);
+		object.setCode("");
+		object.setTitle("");
+		object.setSummary("");
+		object.setGoals("");
+		object.setDraftMode(true);
 		super.getBuffer().setData(object);
 	}
-
 	@Override
 	public void bind(final Practicum object) {
 		assert object != null;
-		int CompanyId;
-		Company Company;
+		int companyId;
+		Company company;
 		int courseId;
 		Course course;
-		CompanyId = super.getRequest().getPrincipal().getActiveRoleId();
-		Company = this.repository.findCompanyById(CompanyId);
+		companyId = super.getRequest().getPrincipal().getActiveRoleId();
+		company = this.repository.findCompanyById(companyId);
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
-		super.bind(object, "code", "title", "abstractPracticum", "goals");
-		object.setCompany(Company);
+		super.bind(object, "code", "title", "summary", "goals");
+		object.setCompany(company);
 		object.setCourse(course);
 	}
 
 	@Override
 	public void validate(final Practicum object) {
 		assert object != null;
+		// El código de un Practicum debe ser único.
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Practicum isCodeUnique;
+			isCodeUnique = this.repository.findAPracticumByCode(object.getCode());
+			super.state(isCodeUnique == null, "code", "Company.Practicum.form.error.code-uniqueness");
+		}
 	}
 
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
-		Collection<PracticumSession> sessions;
-		sessions = this.repository.findSessionsByPracticumId(object.getId());
-		this.repository.deleteAll(sessions);
-		this.repository.delete(object);
+		this.repository.save(object);
 	}
 
 	@Override
@@ -90,11 +88,9 @@ public class CompanyPracticumDeleteService extends AbstractService<Company, Prac
 		Tuple tuple;
 		courses = this.repository.findNotInDraftCourses();
 		choices = SelectChoices.from(courses, "title", object.getCourse());
-		tuple = super.unbind(object, "code", "title", "abstractPracticum", "goals", "course");
-		tuple.put("draftMode", object.getDraftMode());
+		tuple = super.unbind(object, "code", "title", "summary", "goals", "course");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
 		super.getResponse().setData(tuple);
 	}
-
 }

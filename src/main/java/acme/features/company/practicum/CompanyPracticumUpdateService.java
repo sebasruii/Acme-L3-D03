@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.company.practicum;
+package acme.features.company.practicum;
 
 import java.util.Collection;
 
@@ -36,15 +36,15 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	@Override
 	public void authorise() {
 		boolean status;
-		int PracticumId;
-		Practicum Practicum;
-		Company Company;
+		int practicumId;
+		Practicum practicum;
+		Company company;
 
-		PracticumId = super.getRequest().getData("id", int.class);
-		Practicum = this.repository.findPracticumById(PracticumId);
-		Company = Practicum == null ? null : Practicum.getCompany();
+		practicumId = super.getRequest().getData("id", int.class);
+		practicum = this.repository.findPracticumById(practicumId);
+		company = practicum == null ? null : practicum.getCompany();
 
-		status = Practicum != null && !Practicum.getDraftMode() == false || super.getRequest().getPrincipal().hasRole(Company);
+		status = practicum != null && !practicum.getDraftMode() == false || super.getRequest().getPrincipal().hasRole(company);
 		super.getResponse().setAuthorised(status);
 	}
 

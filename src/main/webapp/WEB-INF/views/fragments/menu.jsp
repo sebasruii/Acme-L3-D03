@@ -50,7 +50,12 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
+
 			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>	
+
+			<acme:menu-suboption code="master.menu.lecturer.list" action="/lecturer/course/list"/>
+			<acme:menu-suboption code="master.menu.lecturer.create" action="/lecturer/course/create"/>
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -59,8 +64,8 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
-			<acme:menu-suboption code="master.menu.authenticated.company.practicum.list-mine" action="/authenticated/company/practicum/list-mine"/>
-			<acme:menu-suboption code="master.menu.authenticated.company.practicum.list-all" action="/authenticated/company/practicum/list-all"/>		
+			<acme:menu-suboption code="master.menu.company.practicum.list-mine" action="/company/practicum/list-mine"/>
+			<acme:menu-suboption code="master.menu.company.practicum.list-all" action="/company/practicum/list-all"/>		
 		</acme:menu-option>
 
 	</acme:menu-left>

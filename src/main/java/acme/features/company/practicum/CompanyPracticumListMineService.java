@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.company.practicum;
+package acme.features.company.practicum;
 
 import java.util.Collection;
 
@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.practicums.Practicum;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumListService extends AbstractService<Company, Practicum> {
+public class CompanyPracticumListMineService extends AbstractService<Company, Practicum> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
@@ -33,7 +34,9 @@ public class CompanyPracticumListService extends AbstractService<Company, Practi
 	@Override
 	public void load() {
 		Collection<Practicum> objects;
-		objects = this.repository.findNotInDraftPracticum();
+		Principal principal;
+		principal = super.getRequest().getPrincipal();
+		objects = this.repository.findPracticumByCompanyId(principal.getActiveRoleId());
 		super.getBuffer().setData(objects);
 	}
 
