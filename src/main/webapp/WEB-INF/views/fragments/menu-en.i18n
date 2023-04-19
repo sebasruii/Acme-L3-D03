@@ -77,7 +77,9 @@ master.menu.user-account.lecturer= Lecturer data
 # master.menu.lecturer ##########################################################
 
 master.menu.lecturer = Lecturer
+master.menu.lecturer.favourite-link = Favourite link
+master.menu.lecturer.dashboard = Dashboard
 master.menu.lecturer.course.list = My courses
 master.menu.lecturer.course.create = Create a Course
-
 master.menu.lecturer.lecture.list = My lectures
+
