@@ -1,7 +1,6 @@
 
 package acme.features.assistant.tutorial;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,11 +71,6 @@ public class AssistantTutorialDeleteService extends AbstractService<Assistant, T
 	public void perform(final Tutorial object) {
 		assert object != null;
 
-		Collection<Tutorial> tutorials;
-
-		tutorials = this.repository.findTutorialsByAssistantId(object.getId());
-
-		this.repository.deleteAll(tutorials);
 		this.repository.delete(object);
 	}
 
