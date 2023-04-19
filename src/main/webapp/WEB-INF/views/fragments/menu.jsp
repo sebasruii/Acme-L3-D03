@@ -24,9 +24,14 @@
 			<acme:menu-suboption code="54172162D:  Perez Romero, Lucia" action="https://stackoverflow.com/"/>
 			<acme:menu-suboption code="49398962E: Marquez Sierra, Maria" action="https://www.instagram.com/gravitydusty/?hl=es"/>
 			<acme:menu-suboption code="49852235B: Jimenez Del Villar, Juan Antonio" action="https://twitter.com"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.anonymous.all-courses" action="/any/course/list"/>			
+			
 		</acme:menu-option>	
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.anonymous.all-courses" action="/any/course/list"/>
+			<acme:menu-separator/>	
 			<acme:menu-suboption code="authenticated.offer.list" action="/authenticated/offer/list"/>
 		</acme:menu-option>	
 		
