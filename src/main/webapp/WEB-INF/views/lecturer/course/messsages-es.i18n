@@ -1,6 +1,7 @@
 lecturer.course.list.label.code = Código
 lecturer.course.list.label.title = Título
 lecturer.course.list.label.price = Precio
+lecturer.course.list.button.create = Crear
 
 lecturer.course.form.label.code = Código
 lecturer.course.form.label.title = Título

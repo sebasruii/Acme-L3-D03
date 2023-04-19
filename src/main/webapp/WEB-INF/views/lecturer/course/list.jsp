@@ -8,3 +8,7 @@
 	<acme:list-column code="lecturer.course.list.label.title" path="title" width="70%"/>
 	<acme:list-column code="lecturer.course.list.label.price" path="price" width="10%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="lecturer.course.list.button.create" action="/lecturer/course/create"/>
+</jstl:if>
