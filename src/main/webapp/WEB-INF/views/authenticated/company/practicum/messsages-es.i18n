@@ -1,0 +1,30 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.company.practicum.form.label.code = Código
+authenticated.company.practicum.form.label.title = Título
+authenticated.company.practicum.form.label.summary = Resumen
+authenticated.company.practicum.form.label.goals = Objetivos
+authenticated.company.practicum.form.label.course = Curso
+
+authenticated.company.practicum.form.button.create = Crear
+authenticated.company.practicum.form.button.update = Actualizar
+authenticated.company.practicum.form.button.delete = Borrar
+authenticated.company.practicum.form.button.publish = Publicar
+
+authenticated.company.practicum.list.label.code = Código
+authenticated.company.practicum.list.label.title = Título
+authenticated.company.practicum.list.label.summary = Resumen
+authenticated.company.practicum.list.label.goals = Objetivos
+
+authenticated.company.practicum.list.button.create = Crear
+authenticated.company.practicum.list.button.publish = Publicar
+
+authenticated.company.practicum.form.error.code-uniqueness = El código está repetido y debe ser único

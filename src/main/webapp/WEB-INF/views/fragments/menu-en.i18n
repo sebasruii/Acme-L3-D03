@@ -69,3 +69,9 @@ master.menu.user-account.company= Company data
 
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
+
+# master.menu.company ###################################################
+
+master.menu.company= Practicums
+master.menu.authenticated.company.practicum.list-mine = List my practicum
+master.menu.authenticated.company.practicum.list-all = List all practicum
