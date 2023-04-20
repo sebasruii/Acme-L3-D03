@@ -56,7 +56,7 @@ public class Course extends AbstractEntity {
 	protected Lecturer			lecturer;
 
 
-	public boolean isDraftMode() {
+	public Boolean isDraftMode() {
 		return this.getDraftMode();
 	}
 
