@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.NatureType.NatureType;
+import acme.entities.configuration.Configuration;
 import acme.entities.courses.Course;
 import acme.entities.lectures.Lecture;
 import acme.framework.components.models.Tuple;
@@ -70,6 +71,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		boolean allLecturesArePublished;
 		final boolean courseTypesIsNotTheory;
 
+		Configuration conf;
+
+		conf = this.repository.findSystemConfiguration();
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Course existing;
 
@@ -78,7 +83,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("price"))
-			super.state(object.getPrice().getAmount() >= 0, "salary", "lecturer.course.form.error.negative-price");
+			super.state(object.getPrice().getAmount() >= 0, "price", "lecturer.course.form.error.negative-price");
+
+		if (!super.getBuffer().getErrors().hasErrors("price"))
+			super.state(conf.getAcceptedCurrencies().contains(object.getPrice().getCurrency()), "price", "lecturer.course.form.error.currency");
 		{
 			lectures = this.repository.findManyLecturesByCourseId(object.getId());
 			super.state(!lectures.isEmpty(), "*", "lecturer.course.form.error.emptyLectures");

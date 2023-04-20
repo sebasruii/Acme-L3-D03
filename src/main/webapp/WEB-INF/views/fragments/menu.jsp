@@ -33,6 +33,11 @@
 			<acme:menu-suboption code="master.menu.anonymous.all-courses" action="/any/course/list"/>
 			<acme:menu-separator/>	
 			<acme:menu-suboption code="authenticated.offer.list" action="/authenticated/offer/list"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 		</acme:menu-option>	
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -50,16 +55,6 @@
 			<acme:menu-suboption code="master.menu.administrator.configuration" action="/administrator/configuration/show"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
       <acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
@@ -67,12 +62,6 @@
 			<acme:menu-suboption code="master.menu.lecturer.lecture.list" action="/lecturer/lecture/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturer-dashboard/show"/>
-
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
