@@ -48,8 +48,16 @@ public class Course extends AbstractEntity {
 	protected String			link;
 
 	@NotNull
+	protected Boolean			draftMode;
+
+	@NotNull
 	@ManyToOne(optional = false)
 	@Valid
 	protected Lecturer			lecturer;
+
+
+	public Boolean isDraftMode() {
+		return this.getDraftMode();
+	}
 
 }
