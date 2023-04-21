@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-﻿# master.menu #################################################################
+# master.menu #################################################################
 
 master.menu.home = Inicio
 master.menu.sign-up = Registrarse
@@ -81,10 +81,12 @@ master.menu.user-account.become-lecturer = Hazte profesor
 master.menu.user-account.lecturer= Datos de profesor
 
 # master.menu.lecturer ##########################################################
+master.menu.lecturer = Profesor
+master.menu.lecturer.list = Mis cursos
+master.menu.lecturer.create = Crear un Curso
+master.menu.company.my-practica = Mis prácticas
+master.menu.lecturer.dashboard = Panel de indicadores
 
-
-master.menu.lecturer = Lecturer
-master.menu.lecturer.favourite-link = Favourite link
 
 # master.menu.company ###################################################
 
@@ -92,14 +94,8 @@ master.menu.company= Prácticas
 master.menu.authenticated.company.practicum.list-mine = Mis prácticas
 master.menu.authenticated.company.practicum.list-all = Todas las prácticas
 
-master.menu.lecturer = Profesor
-master.menu.lecturer.list = Mis cursos
-master.menu.lecturer.create = Crear un Curso
-master.menu.company.my-practica = Mis prácticas
 
 
-master.menu.lecturer = Lecturer
-master.menu.lecturer.favourite-link = Favourite link
 
 
 # master.menu.student ##########################################################
@@ -116,12 +112,16 @@ master.menu.anonymous.peep = Peeps
 master.menu.practicum= Practicas
 authenticated.practicum.form.button.list= Practicas
 
-master.menu.lecturer.dashboard = Panel de indicadores
+
 
 master.menu.lecturer = Profesor
 master.menu.lecturer.course.list = Mis cursos
 master.menu.lecturer.course.create = Crear un Curso
 master.menu.lecturer.lecture.list = Mis lecciones
+master.menu.lecturer.favourite-link = Favourite link
 
 
-
+# master.menu.assistant ###########################################################
+master.menu.assistant = Asistente
+master.menu.assistant.list = Lista de Tutorias
+master.menu.assistant.create = Crear Tutoria

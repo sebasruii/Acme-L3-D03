@@ -116,3 +116,8 @@ master.menu.lecturer.course.create = Create a Course
 master.menu.lecturer.lecture.list = My lectures
 
 
+# master.menu.assistant ###########################################################
+master.menu.assistant = Assistant
+master.menu.assistant.list = Tutorials List
+master.menu.assistant.create = Create Tutorial
+
