@@ -20,8 +20,6 @@ public class AdministratorBulletinCreateService extends AbstractService<Administ
 	@Autowired
 	protected AdministratorBulletinRepository repository;
 
-	// AbstractService interface ----------------------------------------------
-
 
 	@Override
 	public void check() {
