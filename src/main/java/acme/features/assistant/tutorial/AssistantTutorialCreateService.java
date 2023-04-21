@@ -46,6 +46,12 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 	@Override
 	public void validate(final Tutorial object) {
 		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Tutorial existing;
+
+			existing = this.repository.findTutorialByCode(object.getCode());
+			super.state(existing == null, "code", "assistant.tutorial.form.error.duplicated");
+		}
 
 		if (object.getCourse() != null && object.getCourse().isDraftMode())
 			super.state(!object.getCourse().isDraftMode(), "course", "assistant.tutorial.error.course.draft");
