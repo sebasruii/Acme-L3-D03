@@ -82,10 +82,17 @@ master.menu.user-account.lecturer= Datos de profesor
 
 
 master.menu.lecturer = Lecturer
+master.menu.lecturer.favourite-link = Favourite link
+
+# master.menu.practicum ##########################################################
+master.menu.practicum= Practicas
+authenticated.practicum.form.button.list= Practicas
+
 master.menu.lecturer.dashboard = Panel de indicadores
 
 master.menu.lecturer = Profesor
 master.menu.lecturer.course.list = Mis cursos
 master.menu.lecturer.course.create = Crear un Curso
 master.menu.lecturer.lecture.list = Mis lecciones
+
 
