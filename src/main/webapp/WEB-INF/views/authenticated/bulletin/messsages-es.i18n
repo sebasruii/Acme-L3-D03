@@ -13,3 +13,7 @@ authenticated.bulletin.list.label.title = Título
 authenticated.bulletin.list.label.message = Mensaje
 authenticated.bulletin.list.label.critical = Crítico
 authenticated.bulletin.list.label.link = Link
+
+
+boolean.true = Sí
+boolean.false = No
