@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.yaml.snakeyaml.error.Mark;
 
 import acme.entities.audits.Audit;
 import acme.entities.audits.AuditingRecord;
@@ -22,8 +21,8 @@ public interface AuditorAuditRepository extends AbstractRepository {
 	@Query("select a from Audit a where a.id = :id")
 	Audit findAuditById(int id);
 
-	@Query("select ar.mark from AuditingRecord ar where ar.draftMode = false and ar.audit.id = :id")
-	List<Mark> findAllReleasedMarksByAuditId(int id);
+	@Query("select ar.mark from AuditingRecord ar where ar.audit.id = :id")
+	List<String> findAllMarksByAuditId(int id);
 
 	@Query("select a from Auditor a where a.userAccount.id = :accountId")
 	Auditor findAuditorByAccountId(int accountId);
