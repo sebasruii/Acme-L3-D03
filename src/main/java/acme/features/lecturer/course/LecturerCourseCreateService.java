@@ -4,6 +4,7 @@ package acme.features.lecturer.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import acme.entities.configuration.Configuration;
 import acme.entities.courses.Course;
 import acme.framework.components.models.Tuple;
@@ -68,6 +69,7 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 
 		if (!super.getBuffer().getErrors().hasErrors("price"))
 			super.state(conf.getAcceptedCurrencies().contains(object.getPrice().getCurrency()), "price", "lecturer.course.form.error.currency");
+
 	}
 
 	@Override

@@ -18,8 +18,10 @@
 <acme:form readonly="true">
   <acme:input-textbox code="authenticated.practicum.form.label.code" path="code"/>
   <acme:input-textbox code="authenticated.practicum.form.label.title" path="title"/>
-  <acme:input-textarea code="authenticated.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
+  <acme:input-textarea code="authenticated.practicum.form.label.summary" path="summary"/>
   <acme:input-textbox code="authenticated.practicum.form.label.nameCompany" path="nameCompany"/>
+  <acme:input-select code="authenticated.practicum.form.label.course" path="course" choices="${course}"/>
+  <acme:input-textarea code="authenticated.practicum.form.label.abstractPracticum" path="abstractPracticum"/>
 
   <acme:submit test="${_command == 'list'}" code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list"/>
 

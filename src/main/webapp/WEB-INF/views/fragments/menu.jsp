@@ -61,18 +61,21 @@
 
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
-			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>	
-      <acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
+          <acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.lecturer.lecture.list" action="/lecturer/lecture/list-all"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.lecturer.dashboard" action="/lecturer/lecturer-dashboard/show"/>
+		</acme:menu-option>
+    		<acme:menu-option code="master.menu.company" access="hasRole('Company')">			
+			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>			
 		</acme:menu-option>
 
 		
 		<acme:menu-option code="master.menu.anonymous.peep" action="/any/peep/list" access="isAnonymous()"/>
 
 		<acme:menu-option code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list" access="hasRole('Company')"/>
+
 	</acme:menu-left>
 
 	<acme:menu-right>

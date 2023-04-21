@@ -50,9 +50,11 @@ public class Lecture extends AbstractEntity {
 	@NotNull
 	protected Boolean			draftMode;
 
+
 	@ManyToOne(optional = false)
 	@Valid
 	protected Lecturer			lecturer;
+
 
 
 	public Boolean isDraftMode() {

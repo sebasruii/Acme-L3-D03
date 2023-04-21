@@ -84,6 +84,21 @@ master.menu.user-account.lecturer= Datos de profesor
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 
+# master.menu.company ###################################################
+
+master.menu.company= Prácticas
+master.menu.authenticated.company.practicum.list-mine = Mis prácticas
+master.menu.authenticated.company.practicum.list-all = Todas las prácticas
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.list = Mis cursos
+master.menu.lecturer.create = Crear un Curso
+master.menu.company.my-practica = Mis prácticas
+
+
+master.menu.lecturer = Lecturer
+master.menu.lecturer.favourite-link = Favourite link
+
 
 # master.menu.peep ##########################################################
 

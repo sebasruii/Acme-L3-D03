@@ -81,6 +81,17 @@ master.menu.user-account.lecturer= Lecturer data
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 
+# master.menu.company ###################################################
+
+master.menu.company= Practicums
+master.menu.company.practicum.list-mine = List my practicum
+master.menu.company.practicum.list-all = List all practicum
+
+master.menu.lecturer.list = My courses
+master.menu.lecturer.create = Create a Course
+master.menu.company.my-practica = My practicums
+master.menu.lecturer.favourite-link = Favourite link
+
 
 # master.menu.peep ##########################################################
 

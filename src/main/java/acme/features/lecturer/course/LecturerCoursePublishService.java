@@ -75,6 +75,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 		conf = this.repository.findSystemConfiguration();
 
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Course existing;
 
@@ -88,6 +89,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		}
 		if (!super.getBuffer().getErrors().hasErrors("price"))
 			super.state(conf.getAcceptedCurrencies().contains(object.getPrice().getCurrency()), "price", "lecturer.course.form.error.currency");
+
 
 		{
 			lectures = this.repository.findManyLecturesByCourseId(object.getId());
