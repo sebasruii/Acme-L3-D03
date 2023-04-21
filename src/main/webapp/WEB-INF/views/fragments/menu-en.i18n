@@ -22,6 +22,7 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.bulletin.list = List Bulletins
 master.menu.authenticated.auditor.create = Become an Auditor
 master.menu.authenticated.auditor.update = Update profile
+master.menu.authenticated.audit.list = List Audits
 
 # master.menu.anonymous #######################################################
 
@@ -34,6 +35,12 @@ master.menu.anonymous.all-courses = See courses
 master.menu.authenticated = Authenticated
 master.menu.authenticated.note.list = Notes
 master.menu.authenticated.note.create = Publish a note
+
+# master.menu.auditor #######################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.list = List Audits
+master.menu.auditor.create = Create Audit
 
 # master.menu.administrator ###################################################
 

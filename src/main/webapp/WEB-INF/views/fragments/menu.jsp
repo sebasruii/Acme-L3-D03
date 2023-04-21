@@ -29,17 +29,6 @@
 			
 		</acme:menu-option>	
 		
-		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.anonymous.all-courses" action="/any/course/list"/>
-			<acme:menu-separator/>	
-			<acme:menu-suboption code="authenticated.offer.list" action="/authenticated/offer/list"/>
-			<acme:menu-separator/>	
-			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
-			<acme:menu-separator/>	
-			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
-		</acme:menu-option>	
-		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.create-bulletin" action="/administrator/bulletin/create"/>
@@ -60,11 +49,25 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+					<acme:menu-suboption code="master.menu.anonymous.all-courses" action="/any/course/list"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="authenticated.offer.list" action="/authenticated/offer/list"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.authenticated.note.list" action="/authenticated/note/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
+			<acme:menu-separator/>	
 			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.auditor.create" action="/authenticated/auditor/create"/>
-			<acme:menu-suboption code="master.menu.authenticated.auditor.update" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
-      		</acme:menu-option>
+			<acme:menu-suboption code="master.menu.authenticated.auditor.update" action="authenticated/auditor/update" access="hasRole('Auditor')"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.list" action="/auditor/audit/list"/>
+			<acme:menu-suboption code="master.menu.auditor.create" action="/auditor/audit/create"/>
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
           <acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
