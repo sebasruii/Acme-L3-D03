@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.practicums.Practicum;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
@@ -14,12 +15,10 @@ import acme.roles.Company;
 @Service
 public class CompanyPracticumListService extends AbstractService<Company, Practicum> {
 
-	// Internal state ---------------------------------------------------------
 	@Autowired
 	protected CompanyPracticumRepository repository;
 
 
-	// AbstractService interface ----------------------------------------------
 	@Override
 	public void check() {
 		super.getResponse().setChecked(true);
@@ -33,15 +32,23 @@ public class CompanyPracticumListService extends AbstractService<Company, Practi
 	@Override
 	public void load() {
 		Collection<Practicum> objects;
-		objects = this.repository.findNotInDraftPracticum();
+		Principal principal;
+
+		principal = super.getRequest().getPrincipal();
+		objects = this.repository.findPracticaByCompanyId(principal.getActiveRoleId());
+
 		super.getBuffer().setData(objects);
 	}
 
 	@Override
 	public void unbind(final Practicum object) {
 		assert object != null;
+
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "summary", "goals");
+
+		tuple = super.unbind(object, "code", "title");
+		tuple.put("courseCode", object.getCourse().getCode());
+
 		super.getResponse().setData(tuple);
 	}
 

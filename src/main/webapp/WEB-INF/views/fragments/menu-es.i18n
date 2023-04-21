@@ -80,4 +80,5 @@ master.menu.authenticated.company.practicum.list-all = Todas las prácticas
 master.menu.lecturer = Profesor
 master.menu.lecturer.list = Mis cursos
 master.menu.lecturer.create = Crear un Curso
+master.menu.company.my-practica = Mis prácticas
 

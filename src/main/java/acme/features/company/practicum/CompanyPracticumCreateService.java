@@ -16,81 +16,78 @@ import acme.roles.Company;
 @Service
 public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
 
-	// Internal state ---------------------------------------------------------
 	@Autowired
 	protected CompanyPracticumRepository repository;
 
 
-	// AbstractService interface ----------------------------------------------
 	@Override
 	public void check() {
 		super.getResponse().setChecked(true);
 	}
+
 	@Override
 	public void authorise() {
-		boolean status;
-		status = super.getRequest().getPrincipal().hasRole(Company.class);
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
+
 	@Override
 	public void load() {
 		Practicum object;
 		Company company;
-		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
 
+		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Practicum();
-		object.setCompany(company);
-		object.setCode("");
-		object.setTitle("");
-		object.setSummary("");
-		object.setGoals("");
 		object.setDraftMode(true);
+		object.setCompany(company);
+
 		super.getBuffer().setData(object);
 	}
+
 	@Override
 	public void bind(final Practicum object) {
 		assert object != null;
-		int companyId;
-		Company company;
+
 		int courseId;
 		Course course;
-		companyId = super.getRequest().getPrincipal().getActiveRoleId();
-		company = this.repository.findCompanyById(companyId);
+
 		courseId = super.getRequest().getData("course", int.class);
 		course = this.repository.findCourseById(courseId);
+
 		super.bind(object, "code", "title", "summary", "goals");
-		object.setCompany(company);
 		object.setCourse(course);
 	}
 
 	@Override
 	public void validate(final Practicum object) {
 		assert object != null;
-		// El código de un Practicum debe ser único.
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Practicum isCodeUnique;
-			isCodeUnique = this.repository.findAPracticumByCode(object.getCode());
-			super.state(isCodeUnique == null, "code", "Company.Practicum.form.error.code-uniqueness");
-		}
+
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.findPracticumByCode(object.getCode()) == null, "code", "company.practicum.form.error.code");
 	}
 
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
+
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Practicum object) {
 		assert object != null;
-		SelectChoices choices;
+
 		Collection<Course> courses;
+		SelectChoices choices;
 		Tuple tuple;
-		courses = this.repository.findNotInDraftCourses();
-		choices = SelectChoices.from(courses, "title", object.getCourse());
-		tuple = super.unbind(object, "code", "title", "summary", "goals", "course");
+
+		courses = this.repository.findAllCourses();
+		choices = SelectChoices.from(courses, "code", object.getCourse());
+
+		tuple = super.unbind(object, "code", "title", "summary", "goals");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
+
 		super.getResponse().setData(tuple);
 	}
+
 }

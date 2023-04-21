@@ -13,7 +13,11 @@ import acme.roles.Company;
 @Controller
 public class CompanyPracticumController extends AbstractController<Company, Practicum> {
 
-	// Internal state ---------------------------------------------------------
+	@Autowired
+	protected CompanyPracticumListService		listService;
+
+	@Autowired
+	protected CompanyPracticumShowService		showService;
 
 	@Autowired
 	protected CompanyPracticumCreateService		createService;
@@ -25,29 +29,16 @@ public class CompanyPracticumController extends AbstractController<Company, Prac
 	protected CompanyPracticumDeleteService		deleteService;
 
 	@Autowired
-	protected CompanyPracticumListService		listService;
-
-	@Autowired
-	protected CompanyPracticumListMineService	listMineService;
-
-	@Autowired
-	protected CompanyPracticumShowService		showService;
-
-	@Autowired
 	protected CompanyPracticumPublishService	publishService;
-
-	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
+		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
-		super.addBasicCommand("create", this.createService);
-		super.addCustomCommand("list-all", "list", this.listService);
-		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
-
 }

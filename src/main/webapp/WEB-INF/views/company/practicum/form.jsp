@@ -3,13 +3,13 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
-<acme:form> 
-	<acme:input-textbox code="company.practicum.form.label.code" path="code"/>
-	<acme:input-textbox code="company.practicum.form.label.title" path="title"/>
-	<acme:input-textarea code="company.practicum.form.label.summary" path="summary"/>
-	<acme:input-textarea code="company.practicum.form.label.goals" path="goals"/>
+<acme:form>
 	<acme:input-select code="company.practicum.form.label.course" path="course" choices="${courses}"/>
-
+	<acme:input-textbox code="company.practicum.form.label.practicum-code" path="code"/>
+	<acme:input-textbox code="company.practicum.form.label.practicum-title" path="title"/>
+	<acme:input-textbox code="company.practicum.form.label.summary" path="summary"/>
+	<acme:input-textbox code="company.practicum.form.label.goals" path="goals"/>
+	
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="company.practicum.form.button.practicum-sessions" action="/company/practicum-session/list?masterId=${id}"/>			

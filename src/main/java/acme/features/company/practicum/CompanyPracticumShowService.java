@@ -21,26 +21,28 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 	protected CompanyPracticumRepository repository;
 
 
-	// AbstractService interface ----------------------------------------------
 	@Override
 	public void check() {
 		boolean status;
+
 		status = super.getRequest().hasData("id", int.class);
+
 		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
 		boolean status;
-		final Company Company;
-		final Practicum Practicum;
-		int PracticumId;
+		Practicum object;
 		Principal principal;
-		PracticumId = super.getRequest().getData("id", int.class);
-		Practicum = this.repository.findPracticumById(PracticumId);
+		int practicumId;
+
+		practicumId = super.getRequest().getData("id", int.class);
+		object = this.repository.findPracticumById(practicumId);
 		principal = super.getRequest().getPrincipal();
-		Company = Practicum == null ? null : Practicum.getCompany();
-		status = Practicum != null && !Practicum.getDraftMode() == false || principal.hasRole(Company);
+
+		status = object.getCompany().getId() == principal.getActiveRoleId();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -48,22 +50,28 @@ public class CompanyPracticumShowService extends AbstractService<Company, Practi
 	public void load() {
 		Practicum object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findPracticumById(id);
+
 		super.getBuffer().setData(object);
 	}
 
 	@Override
 	public void unbind(final Practicum object) {
 		assert object != null;
-		Tuple tuple;
+
 		Collection<Course> courses;
 		SelectChoices choices;
+		Tuple tuple;
+
 		courses = this.repository.findAllCourses();
-		choices = SelectChoices.from(courses, "title", object.getCourse());
-		tuple = super.unbind(object, "code", "title", "summary", "goals");
+		choices = SelectChoices.from(courses, "code", object.getCourse());
+
+		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode");
 		tuple.put("course", choices.getSelected().getKey());
 		tuple.put("courses", choices);
+
 		super.getResponse().setData(tuple);
 	}
 }

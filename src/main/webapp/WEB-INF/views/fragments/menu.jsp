@@ -63,9 +63,8 @@
 			<acme:menu-suboption code="master.menu.authenticated.note.create" action="/authenticated/note/create"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
-			<acme:menu-suboption code="master.menu.company.practicum.list-mine" action="/company/practicum/list-mine"/>
-			<acme:menu-suboption code="master.menu.company.practicum.list-all" action="/company/practicum/list-all"/>		
+		<acme:menu-option code="master.menu.company" access="hasRole('Company')">			
+			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>			
 		</acme:menu-option>
 
 	</acme:menu-left>
