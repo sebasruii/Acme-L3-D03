@@ -20,3 +20,5 @@ lecturer.lecture.form.button.delete-from-course = Borrar de un curso
 
 lecturer.lectureCourse.form.button.add = Añadir lección
 lecturer.lectureCourse.form.button.delete = Borrar lección
+
+lecturer.lecture.lectureType-invalid = Una lección debe ser teórica (THEORY) o práctica (HANDS-ON)

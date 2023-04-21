@@ -1,8 +1,6 @@
 
 package acme.features.lecturer.lectureCourse;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer, LectureCourse> {
+public class LecturerLectureCourseShowService extends AbstractService<Lecturer, LectureCourse> {
 
 	@Autowired
 	protected LecturerLectureCourseRepository repository;
@@ -52,32 +50,6 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	}
 
 	@Override
-	public void bind(final LectureCourse object) {
-		assert object != null;
-
-	}
-
-	@Override
-	public void validate(final LectureCourse object) {
-		assert object != null;
-
-		super.state(object.getLecture() != null, "course", "lecturer.lecture-course.form.error.no-lecture-selected");
-		if (object.getLecture() != null)
-			super.state(object.getCourse().isDraftMode(), "course", "lecturer.lecture-course.form.error.published");
-	}
-
-	@Override
-	public void perform(final LectureCourse object) {
-		assert object != null;
-
-		LectureCourse lectureCourse;
-
-		lectureCourse = this.repository.findOneLectureCourseBy(object.getCourse().getId(), object.getLecture().getId());
-
-		this.repository.delete(lectureCourse);
-	}
-
-	@Override
 	public void unbind(final LectureCourse object) {
 		assert object != null;
 		Tuple tuple;
@@ -87,12 +59,4 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 		super.getResponse().setData(tuple);
 	}
 
-	@Override
-	public void unbind(final Collection<LectureCourse> objects) {
-		assert objects != null;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		super.getResponse().setGlobal("id", id);
-	}
 }

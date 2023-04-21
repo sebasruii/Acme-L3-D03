@@ -5,19 +5,14 @@
 
 <acme:form>
 	<jstl:choose>
-		<jstl:when test="${_command == 'delete'}">
-			<acme:input-select code="lecturer.lectureCourse.form.label.course" path="course" choices="${courses}"/>		
+		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
+			<acme:input-textbox code="lecturer.lectureCourse.form.label.lecture" path="lecture.title" readonly="true"/>
+			<acme:input-textbox code="lecturer.lectureCourse.form.label.course" path="course.code" readonly="true"/>
+			<acme:submit code="lecturer.lectureCourse.form.button.delete" action="/lecturer/lecture-course/delete?id=${id}"/>		
 		</jstl:when>	
 		<jstl:when test="${_command == 'add'}">
-			<acme:input-select code="lecturer.lectureCourse.form.label.lecture" path="lecture" choices="${lectures}"/>		
-		</jstl:when>	
-	</jstl:choose>
-	<jstl:choose>
-		<jstl:when test="${_command == 'add'}">
-			<acme:submit code="lecturer.lectureCourse.form.button.add" action="/lecturer/lecture-course/add?courseId=${courseId}"/>
-		</jstl:when>	
-		<jstl:when test="${_command == 'delete'}">
-			<acme:submit code="lecturer.lectureCourse.form.button.delete" action="/lecturer/lecture-course/delete?lectureId=${lectureId}"/>
+			<acme:input-select code="lecturer.lectureCourse.form.label.select-lecture" path="lecture" choices="${lectures}"/>
+			<acme:submit code="lecturer.lectureCourse.form.button.add" action="/lecturer/lecture-course/add?courseId=${courseId}"/>		
 		</jstl:when>	
 	</jstl:choose>
 </acme:form>
