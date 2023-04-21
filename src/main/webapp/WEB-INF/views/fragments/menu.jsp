@@ -72,9 +72,16 @@
 		</acme:menu-option>
 
 		
+		<acme:menu-option code="master.menu.student" access="hasRole('Student')">
+ 			<acme:menu-suboption code="master.menu.student.studentEnrolmentList" action="/student/enrolment/list"/>		
+ 		</acme:menu-option>
+
+
+		
 		<acme:menu-option code="master.menu.anonymous.peep" action="/any/peep/list" access="isAnonymous()"/>
 
 		<acme:menu-option code="authenticated.practicum.form.button.list" action="/authenticated/practicum/list" access="hasRole('Company')"/>
+
 
 	</acme:menu-left>
 

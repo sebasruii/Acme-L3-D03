@@ -100,6 +100,13 @@ master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 
 
+# master.menu.student ##########################################################
+
+master.menu.student = Estudiante
+master.menu.student.studentCourseList = Listado de Cursos
+master.menu.student.studentEnrolmentList = Listado de Matriculas
+
+
 # master.menu.peep ##########################################################
 
 master.menu.anonymous.peep = Peeps
@@ -113,5 +120,6 @@ master.menu.lecturer = Profesor
 master.menu.lecturer.course.list = Mis cursos
 master.menu.lecturer.course.create = Crear un Curso
 master.menu.lecturer.lecture.list = Mis lecciones
+
 
 
