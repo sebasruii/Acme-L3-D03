@@ -59,6 +59,12 @@
 			<acme:menu-suboption code="master.menu.administrator.configuration" action="/administrator/configuration/show"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.bulletin.list" action="/authenticated/bulletin/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.auditor.create" action="/authenticated/auditor/create"/>
+			<acme:menu-suboption code="master.menu.authenticated.auditor.update" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
+      		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.lecturer" access="hasRole('Lecturer')">
           <acme:menu-suboption code="master.menu.lecturer.course.list" action="/lecturer/course/list"/>
