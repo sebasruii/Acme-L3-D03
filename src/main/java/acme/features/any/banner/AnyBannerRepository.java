@@ -19,7 +19,7 @@ public interface AnyBannerRepository extends AbstractRepository {
 	@Query("SELECT count(b) from Banner b where b.startDate<=:actualDate and b.finishDate>=:actualDate")
 	int countBanners(Date actualDate);
 
-	@Query("SELECT b from Banner b where b.startDate<=:actualDate and b.finishDate>=:actualDate")
+	@Query("SELECT b from Banner b where b.startDate<=?1 and b.finishDate>=?1")
 	List<Banner> findActiveBanners(Date actualDate, PageRequest pageRequest);
 
 	default Banner findRandomBanner() {
