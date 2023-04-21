@@ -36,7 +36,7 @@ public class AnyPeepUpdateService extends AbstractService<Any, Peep> {
 		Peep peep;
 
 		id = super.getRequest().getData("id", int.class);
-		peep = this.repository.findOnePeepById(id);
+		peep = this.repository.findPeepById(id);
 
 		any = new Any();
 		status = super.getRequest().getPrincipal().hasRole(any) && peep != null;
@@ -50,7 +50,7 @@ public class AnyPeepUpdateService extends AbstractService<Any, Peep> {
 
 		id = super.getRequest().getData("id", int.class);
 
-		object = this.repository.findOnePeepById(id);
+		object = this.repository.findPeepById(id);
 
 		super.getBuffer().setData(object);
 	}

@@ -36,7 +36,7 @@ public class AnyPeepListService extends AbstractService<Any, Peep> {
 	public void load() {
 		Collection<Peep> objects;
 
-		objects = this.repository.findManyPeep();
+		objects = this.repository.findAllPeeps();
 
 		super.getBuffer().setData(objects);
 	}
@@ -47,7 +47,7 @@ public class AnyPeepListService extends AbstractService<Any, Peep> {
 
 		Tuple tuple;
 
-		tuple = super.unbind(object, "moment", "title", "nick");
+		tuple = super.unbind(object, "instantiation", "title", "nick");
 
 		super.getResponse().setData(tuple);
 	}

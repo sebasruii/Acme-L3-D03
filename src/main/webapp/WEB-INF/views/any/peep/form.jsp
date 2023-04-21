@@ -18,7 +18,7 @@
 <acme:form>
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' }">
-		 	<acme:input-textbox code="any.peep.form.label.moment" placeholder="yyyy/MM/dd HH:mm" path="instantiation"/>
+		 	<acme:input-textbox code="any.peep.form.label.instantiation" placeholder="yyyy/MM/dd HH:mm" path="instantiation"/>
 		</jstl:when>
 	</jstl:choose>
 	<acme:input-textbox code="any.peep.form.label.title" path="title"/>	
