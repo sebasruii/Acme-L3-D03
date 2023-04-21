@@ -54,6 +54,9 @@ public class TutorialSession extends AbstractEntity {
 	@URL
 	protected String			link;
 
+	@NotNull
+	protected boolean			draftMode;
+
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
