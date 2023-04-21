@@ -44,6 +44,10 @@ master.menu.administrator.create-offer = Create Oferta
 
 master.menu.administrator.create-bulletin = Crear Boletín
 
+master.menu.administrator.banner = Carteles
+master.menu.administrator.banner.button.create = Crear Carteles
+
+
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema

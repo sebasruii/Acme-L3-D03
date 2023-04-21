@@ -43,6 +43,8 @@ master.menu.administrator.list-offer = List Offer
 master.menu.administrator.create-offer = Create Offer
 
 master.menu.administrator.create-bulletin = Create Bulletin
+master.menu.administrator.banner = Banners
+master.menu.administrator.banner.button.create = Create Banner
 
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)

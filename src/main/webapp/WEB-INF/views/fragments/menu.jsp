@@ -44,6 +44,10 @@
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.create-bulletin" action="/administrator/bulletin/create"/>
 			<acme:menu-separator/>
+
+			<acme:menu-suboption code="master.menu.administrator.banner" action="/administrator/banner/list"/>
+			<acme:button code="administrator.banner.list.button.create" action="/administrator/banner/create"/>
+ 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-offer" action="/administrator/offer/list"/>
 			<acme:menu-suboption code="master.menu.administrator.create-offer" action="/administrator/offer/create"/>
 			<acme:menu-separator/>
