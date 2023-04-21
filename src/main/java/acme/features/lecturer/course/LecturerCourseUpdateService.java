@@ -4,6 +4,8 @@ package acme.features.lecturer.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import acme.entities.configuration.Configuration;
 import acme.entities.courses.Course;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -62,6 +64,10 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	public void validate(final Course object) {
 		assert object != null;
 
+		Configuration conf;
+
+		conf = this.repository.findSystemConfiguration();
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Course existing;
 
@@ -69,8 +75,14 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			super.state(existing == null || existing.equals(object), "code", "lecturer.course.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("price")) {
+			super.state(object.getPrice().getAmount() >= 0.01, "price", "lecturer.course.form.error.negative-price");
+			super.state(object.getPrice().getAmount() <= 1000, "price", "lecturer.course.form.error.max-price");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("price"))
-			super.state(object.getPrice().getAmount() >= 0, "salary", "lecturer.course.form.error.negative-price");
+			super.state(conf.getAcceptedCurrencies().contains(object.getPrice().getCurrency()), "price", "lecturer.course.form.error.currency");
+
 	}
 
 	@Override

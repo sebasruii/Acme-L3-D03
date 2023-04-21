@@ -1,6 +1,7 @@
 lecturer.course.list.label.code = Código
 lecturer.course.list.label.title = Título
 lecturer.course.list.label.price = Precio
+lecturer.course.list.button.create = Crear
 
 lecturer.course.form.label.code = Código
 lecturer.course.form.label.title = Título
@@ -20,3 +21,7 @@ lecturer.course.form.error.negative-price = El precio debe ser cero o una cantid
 lecturer.course.form.error.emptyLectures = El curso no tiene niguna lección. Añade al menos una.
 lecturer.course.form.error.unpublishedLectures = Todas las lecciones deben estar publicadas antes de publicar un curso.
 lecturer.course.form.error.allLecturesAreTheory = Los cursos no pueden ser puramente teóricos.
+lecturer.course.form.error.currency = Esta moneda no es aceptada por el sistema
+
+lecturer.course.form.error.max-price = El precio máximo para un curso es 1000
+
