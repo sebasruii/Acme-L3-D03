@@ -82,6 +82,10 @@ master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 
 
+# master.menu.peep ##########################################################
+
+master.menu.anonymous.peep = Peeps
+
 # master.menu.practicum ##########################################################
 master.menu.practicum= Practicum
 authenticated.practicum.form.button.list= Practicum

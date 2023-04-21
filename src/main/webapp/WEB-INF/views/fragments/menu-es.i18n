@@ -84,6 +84,10 @@ master.menu.user-account.lecturer= Datos de profesor
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
 
+
+# master.menu.peep ##########################################################
+
+master.menu.anonymous.peep = Peeps
 # master.menu.practicum ##########################################################
 master.menu.practicum= Practicas
 authenticated.practicum.form.button.list= Practicas
