@@ -16,14 +16,16 @@ public class AuthenticatedBulletinController extends AbstractController<Authenti
 	//Internal state -------------------------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedBulletinListService listService;
+	protected AuthenticatedBulletinListService	listService;
 
-	//Constructor
+	@Autowired
+	protected AuthenticatedBulletinShowService	showService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 
 }
