@@ -56,7 +56,7 @@ public class AuditorAuditingRecordListService extends AbstractService<Auditor, A
 
 		tuple = super.unbind(object, "subject");
 		tuple.put("mark", object.getMark().toString());
-		tuple.put("draft", object.getDraftMode() ? "X" : "✓");
+		tuple.put("draft", object.getDraftMode() ? "✓" : "X");
 
 		super.getResponse().setData(tuple);
 	}
