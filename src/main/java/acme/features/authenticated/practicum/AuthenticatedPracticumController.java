@@ -1,25 +1,27 @@
 
-package acme.features.authenticated.bulletin;
+package acme.features.authenticated.practicum;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.entities.bulletins.Bulletin;
+import acme.entities.practicums.Practicum;
 import acme.framework.components.accounts.Authenticated;
 import acme.framework.controllers.AbstractController;
 
 @Controller
-public class AuthenticatedBulletinController extends AbstractController<Authenticated, Bulletin> {
+public class AuthenticatedPracticumController extends AbstractController<Authenticated, Practicum> {
 
-	//Internal state -------------------------------------------------------------------------
-
-	@Autowired
-	protected AuthenticatedBulletinListService	listService;
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AuthenticatedBulletinShowService	showService;
+	protected AuthenticatedPracticumListService	listService;
+
+	@Autowired
+	protected AuthenticatedPracticumShowService	showService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct

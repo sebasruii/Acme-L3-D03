@@ -15,5 +15,8 @@ authenticated.bulletin.list.label.critical = Crítico
 authenticated.bulletin.list.label.link = Link
 
 
-boolean.true = Sí
-boolean.false = No
+authenticated.bulletin.form.label.instantiation = Instanciación
+authenticated.bulletin.form.label.title = Título
+authenticated.bulletin.form.label.message = Mensaje
+authenticated.bulletin.form.label.critical = Crítico
+authenticated.bulletin.form.label.link = Link
