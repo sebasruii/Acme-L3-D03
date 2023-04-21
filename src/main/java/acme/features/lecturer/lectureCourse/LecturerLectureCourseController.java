@@ -19,10 +19,18 @@ public class LecturerLectureCourseController extends AbstractController<Lecturer
 	@Autowired
 	protected LecturerLectureCourseDeleteService	deleteService;
 
+	@Autowired
+	protected LecturerLectureCourseListService		listService;
+
+	@Autowired
+	LecturerLectureCourseShowService				showService;
+
 
 	@PostConstruct
 	protected void initialise() {
 		super.addCustomCommand("add", "create", this.addService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 }

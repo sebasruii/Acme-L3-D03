@@ -6,10 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.courses.Course;
-import acme.entities.lectures.Lecture;
 import acme.entities.lectures.LectureCourse;
-import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -25,7 +22,7 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	public void check() {
 		boolean status;
 
-		status = super.getRequest().hasData("lectureId", int.class);
+		status = super.getRequest().hasData("id", int.class);
 
 		super.getResponse().setChecked(status);
 	}
@@ -33,12 +30,12 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	@Override
 	public void authorise() {
 		boolean status;
-		int lectureId;
-		Lecture lecture;
+		int lectureCourseId;
+		LectureCourse lectureCourse;
 
-		lectureId = super.getRequest().getData("lectureId", int.class);
-		lecture = this.repository.findOneLectureById(lectureId);
-		status = lecture != null && super.getRequest().getPrincipal().hasRole(lecture.getLecturer());
+		lectureCourseId = super.getRequest().getData("id", int.class);
+		lectureCourse = this.repository.findOneLectureCourseById(lectureCourseId);
+		status = lectureCourse != null && lectureCourse.getCourse().isDraftMode() && super.getRequest().getPrincipal().hasRole(lectureCourse.getCourse().getLecturer()) && super.getRequest().getPrincipal().hasRole(lectureCourse.getLecture().getLecturer());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,13 +43,10 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	@Override
 	public void load() {
 		LectureCourse object;
-		int lectureId;
-		Lecture lecture;
+		int id;
 
-		lectureId = super.getRequest().getData("lectureId", int.class);
-		lecture = this.repository.findOneLectureById(lectureId);
-		object = new LectureCourse();
-		object.setLecture(lecture);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneLectureCourseById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -61,21 +55,14 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	public void bind(final LectureCourse object) {
 		assert object != null;
 
-		int courseId;
-		Course course;
-
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findOneCourseById(courseId);
-
-		object.setCourse(course);
 	}
 
 	@Override
 	public void validate(final LectureCourse object) {
 		assert object != null;
 
-		super.state(object.getCourse() != null, "course", "lecturer.lecture-course.form.error.no-course-selected");
-		if (object.getCourse() != null)
+		super.state(object.getLecture() != null, "course", "lecturer.lecture-course.form.error.no-lecture-selected");
+		if (object.getLecture() != null)
 			super.state(object.getCourse().isDraftMode(), "course", "lecturer.lecture-course.form.error.published");
 	}
 
@@ -93,20 +80,9 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	@Override
 	public void unbind(final LectureCourse object) {
 		assert object != null;
+		Tuple tuple;
 
-		int lectureId;
-		Collection<Course> courses;
-		final Tuple tuple;
-		SelectChoices choices;
-
-		lectureId = super.getRequest().getData("lectureId", int.class);
-		courses = this.repository.findCoursesByLectureId(lectureId);
-
-		choices = SelectChoices.from(courses, "code", object.getCourse());
-
-		tuple = new Tuple();
-		tuple.put("course", choices.getSelected().getKey());
-		tuple.put("courses", choices);
+		tuple = super.unbind(object, "lecture.title", "course.code");
 
 		super.getResponse().setData(tuple);
 	}
@@ -114,9 +90,9 @@ public class LecturerLectureCourseDeleteService extends AbstractService<Lecturer
 	@Override
 	public void unbind(final Collection<LectureCourse> objects) {
 		assert objects != null;
-		int lectureId;
+		int id;
 
-		lectureId = super.getRequest().getData("lectureId", int.class);
-		super.getResponse().setGlobal("lectureId", lectureId);
+		id = super.getRequest().getData("id", int.class);
+		super.getResponse().setGlobal("id", id);
 	}
 }

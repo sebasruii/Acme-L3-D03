@@ -20,3 +20,5 @@ lecturer.lecture.form.button.delete-from-course = Remove from a Course
 
 lecturer.lectureCourse.form.button.add = Add lecture
 lecturer.lectureCourse.form.button.delete = Delete lecture
+
+lecturer.lecture.lectureType-invalid = A lecture must be theorical or hands-on

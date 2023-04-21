@@ -20,6 +20,8 @@ master.menu.sign-out = Sign out
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.bulletin.list = List Bulletins
+master.menu.authenticated.auditor.create = Become an Auditor
+master.menu.authenticated.auditor.update = Update profile
 
 # master.menu.anonymous #######################################################
 
@@ -43,6 +45,8 @@ master.menu.administrator.list-offer = List Offer
 master.menu.administrator.create-offer = Create Offer
 
 master.menu.administrator.create-bulletin = Create Bulletin
+master.menu.administrator.banner = Banners
+master.menu.administrator.banner.button.create = Create Banner
 
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
@@ -78,6 +82,34 @@ master.menu.user-account.lecturer= Lecturer data
 
 master.menu.lecturer = Lecturer
 master.menu.lecturer.favourite-link = Favourite link
+
+
+# master.menu.student ##########################################################
+
+master.menu.student = Student
+master.menu.student.studentCourseList = List of Courses
+master.menu.student.studentEnrolmentList = List of Enrolments
+
+# master.menu.company ###################################################
+
+master.menu.company= Practicums
+master.menu.company.practicum.list-mine = List my practicum
+master.menu.company.practicum.list-all = List all practicum
+
+master.menu.lecturer.list = My courses
+master.menu.lecturer.create = Create a Course
+master.menu.company.my-practica = My practicums
+master.menu.lecturer.favourite-link = Favourite link
+
+
+# master.menu.peep ##########################################################
+
+master.menu.anonymous.peep = Peeps
+
+# master.menu.practicum ##########################################################
+master.menu.practicum= Practicum
+authenticated.practicum.form.button.list= Practicum
+
 master.menu.lecturer.dashboard = Dashboard
 master.menu.lecturer.course.list = My courses
 master.menu.lecturer.course.create = Create a Course
@@ -88,3 +120,4 @@ master.menu.lecturer.lecture.list = My lectures
 master.menu.assistant = Assistant
 master.menu.assistant.list = Tutorials List
 master.menu.assistant.create = Create Tutorial
+

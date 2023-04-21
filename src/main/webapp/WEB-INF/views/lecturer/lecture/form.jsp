@@ -21,8 +21,5 @@
 			<acme:submit code="lecturer.lecture.form.button.create" action="/lecturer/lecture/create"/>
 		</jstl:when>		
 	</jstl:choose>
-	<jstl:if test="${_command != 'create'}">
-		<acme:button code="lecturer.lecture.form.button.delete-from-course" action="/lecturer/lecture-course/delete?lectureId=${lectureId}"/>
-	</jstl:if>
 	
 </acme:form>

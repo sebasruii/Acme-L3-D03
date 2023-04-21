@@ -20,7 +20,7 @@
 			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list?courseId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture/list?courseId=${id}"/>
+			<acme:button code="lecturer.course.form.button.lectures" action="/lecturer/lecture-course/list?courseId=${id}"/>
 			<acme:submit code="lecturer.course.form.button.update" action="/lecturer/course/update"/>
 			<acme:submit code="lecturer.course.form.button.delete" action="/lecturer/course/delete"/>
 			<acme:submit code="lecturer.course.form.button.publish" action="/lecturer/course/publish"/>

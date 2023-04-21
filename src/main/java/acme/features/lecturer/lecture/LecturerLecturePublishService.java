@@ -63,6 +63,9 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 	@Override
 	public void validate(final Lecture object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("lectureType"))
+			super.state(!object.getLectureType().equals(NatureType.BALANCED), "lectureType", "lecturer.lecture.lectureType-invalid");
 	}
 
 	@Override
