@@ -47,7 +47,7 @@
 			<acme:menu-suboption code="master.menu.lecturer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.anonymous.peep" action="/any/peep/list" access="isAnonymous()"/>
+		<acme:menu-option code="master.menu.anonymous.peep" action="/any/peep/list"/>
 
 	</acme:menu-left>
 

@@ -13,7 +13,7 @@ any.peep.list.label.title = Título
 any.peep.list.label.nick = Apodo
 any.peep.list.button.publish = Publicar
 
-any.peep.form.label.instantiation = Fecha de creación
+any.peep.list.label.instantiation = Fecha de creación
 any.peep.form.label.title = Título
 any.peep.form.label.nick = Apodo
 any.peep.form.label.message = Mensaje
